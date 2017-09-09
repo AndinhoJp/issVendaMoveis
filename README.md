@@ -4,9 +4,9 @@ O sistema a ser desenvolvido consiste em alguns requisitos já levantados, como 
 
 ##Integrantes:
 ***
- * -Anderson Sergio Oyama
+ * Anderson Sergio Oyama
 
- * -Andre Dias Menegazzo Pereira	
+ * Andre Dias Menegazzo Pereira	
 
- * -Gregório Granado Magalhãe 
+ * Gregório Granado Magalhãe 
 
