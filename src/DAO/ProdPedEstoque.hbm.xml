@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/09/2017 22:43:38 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.ProdPedEstoque" table="ProdPedEstoque" catalog="Vendas" optimistic-lock="version">
+        <id name="idProdPedEsotque" type="string">
+            <column name="IdProdPedEsotque" length="120" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pedidoEstoque" class="DAO.PedidoEstoque" fetch="select">
+            <column name="idPedEst" length="60" />
+        </many-to-one>
+        <many-to-one name="produto" class="DAO.Produto" fetch="select">
+            <column name="idProd" length="60" />
+        </many-to-one>
+        <property name="quantidade" type="java.lang.Integer">
+            <column name="quantidade" />
+        </property>
+        <property name="quantidadePedAtend" type="java.lang.Integer">
+            <column name="quantidadePedAtend" />
+        </property>
+        <property name="stat" type="java.lang.Integer">
+            <column name="stat" />
+        </property>
+    </class>
+</hibernate-mapping>
