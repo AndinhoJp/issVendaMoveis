@@ -141,10 +141,8 @@ public class JFrameTelaLogin extends javax.swing.JFrame {
     private void jButtonAutenticarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAutenticarActionPerformed
         boolean login = new ControleLogin().verificaAcesso(jTextFieldLogin.getText(), jPassword.getText());
         if (login) {
-            System.out.print("Entrou");
             dispose();
         }
-        System.out.print("32");
     }//GEN-LAST:event_jButtonAutenticarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -182,11 +180,8 @@ public class JFrameTelaLogin extends javax.swing.JFrame {
 
     private void jPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordKeyPressed
       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-          System.out.print(jPassword.getText() + "\n");
           boolean login = new ControleLogin().verificaAcesso(jTextFieldLogin.getText(), jPassword.getText());
-
         if (login) {
-            System.out.print("Entrou");
             dispose();
         }
       }

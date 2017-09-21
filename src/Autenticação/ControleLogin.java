@@ -6,6 +6,7 @@
 package Autenticação;
 
 import DAO.Acesso;
+import DAO.Funcionario;
 import Hibernate.HibernateUtil;
 import Telas.JFrameAdministrador;
 import java.util.ArrayList;
@@ -22,14 +23,11 @@ public class ControleLogin {
 
     public boolean verificaAcesso(String login, String senha) {
         if (verificaLogin(login)) {
-            //System.out.print("Login verificado");
             if (verificaSenha(login, senha)) {
-                //System.out.print("antesLista");
                 ArrayList<Acesso> listaAcessos = new ControleLogin().getListaAcessos();
                 HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
                 for (Acesso ac : listaAcessos) {
                     if (ac.getLogin().equals(login)) {
-                        System.out.print("Login");
                         nivelAcesso(ac.getFuncionario().getNivelAcesso());
                     }
                 }
@@ -44,6 +42,14 @@ public class ControleLogin {
             return false;
         }
     }
+    
+    public void criarAcesso(String login, Funcionario funcionario, String senha) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        Acesso acesso = new Acesso(login, funcionario, senha);
+        s.save(acesso);
+        s.getTransaction().commit();
+    }
 
     public ArrayList<Acesso> getListaAcessos() {
         Session ses = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -57,6 +63,19 @@ public class ControleLogin {
         });
         ses.getTransaction().commit();
         return listaAcessos;
+    }
+
+    public boolean confereDuplicidade(String login) {
+        ArrayList<Acesso> listaAcessos = getListaAcessos();
+        HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+        for (Acesso ac : listaAcessos) {
+            if (ac.getLogin().equals(login)) {
+                HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+                return false;
+            }
+        }
+        HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+        return true;
     }
 
     public boolean verificaLogin(String login) {

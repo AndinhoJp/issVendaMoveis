@@ -47,6 +47,7 @@ Contributor(s):
     <property name="hibernate.connection.username">Sistema</property>
     <property name="hibernate.connection.password">sis975</property>
     <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
     <mapping resource="DAO/Acesso.hbm.xml"/>
     <mapping resource="DAO/Gastos.hbm.xml"/>
     <mapping resource="DAO/Produto.hbm.xml"/>
