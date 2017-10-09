@@ -1,6 +1,6 @@
-package DAO;
+package dao;
 
-import Entities.ProdutoEntity;
+import entities.ProdutoEntity;
 import com.sun.istack.internal.Nullable;
 import org.hibernate.SessionFactory;
 

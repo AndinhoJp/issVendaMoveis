@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import org.hibernate.*;
 import org.hibernate.query.Query;

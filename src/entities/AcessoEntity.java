@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import javax.persistence.*;
 
@@ -6,7 +6,14 @@ import javax.persistence.*;
 @Table(name = "Acesso", schema = "Vendas", catalog = "")
 public class AcessoEntity {
     private String login;
+    private FuncionarioEntity funcionario;
     private String senha;
+
+    public AcessoEntity(String login, FuncionarioEntity funcionario, String senha) {
+        this.login = login;
+        this.funcionario = funcionario;
+        this.senha = senha;
+    }
 
     @Id
     @Column(name = "login")
@@ -46,5 +53,9 @@ public class AcessoEntity {
         int result = login != null ? login.hashCode() : 0;
         result = 31 * result + (senha != null ? senha.hashCode() : 0);
         return result;
+    }
+
+    public FuncionarioEntity getFuncionario() {
+        return funcionario;
     }
 }
