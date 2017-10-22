@@ -1,7 +1,7 @@
 package ControlaFuncionario;
 
 import DAO.Funcionario;
-import Util.HibernateUtil;
+import Hibernate.HibernateUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
