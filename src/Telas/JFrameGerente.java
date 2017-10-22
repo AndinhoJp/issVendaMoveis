@@ -5,6 +5,8 @@
  */
 package Telas;
 
+import ControlaFuncionario.JPanelCadastroFuncionario;
+import ControlaFuncionario.JPanelListaFuncionario;        
 import ControleCliente.JPanelCadastroCliente;
 import ControleCliente.JPanelConsultaCliente;
 import Imagem.JPanel.JPanelImagemGerente;
@@ -58,7 +60,6 @@ public class JFrameGerente extends javax.swing.JFrame {
         jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1020, 715));
         setResizable(false);
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/redebras-topo-menor.jpg"))); // NOI18N
@@ -159,6 +160,17 @@ public class JFrameGerente extends javax.swing.JFrame {
         card.next(jPanelBase);
     }//GEN-LAST:event_jMenuItemClienteConsultarActionPerformed
 
+    private void jMenuItemFuncionarioCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+        JPanel jPanelCadastroFuncionario = new JPanelCadastroFuncionario();
+        jPanelBase.add(jPanelCadastroFuncionario);
+        card.next(jPanelBase);
+    }                                                         
+
+    private void jMenuItemFuncionarioConsultarActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+        JPanel jPanelListaFuncionario = new JPanelListaFuncionario();
+        jPanelBase.add(jPanelListaFuncionario);
+        card.next(jPanelBase);
+    }                           
     /**
      * @param args the command line arguments
      */
@@ -184,6 +196,7 @@ public class JFrameGerente extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFrameGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
