@@ -44,7 +44,7 @@ public class Cliente  implements java.io.Serializable {
         this.cpf = cpf;
         this.endereco = endereco;
     }
-    public Cliente(String cliId, String nome, String sobrenome, String cpf, String rg, Date dataNascimento, String endereco, String numero, String complemento, String cidade, String estado, String telFixo, String telMovel, String email, String nomeMae, String nomePai, String sexo, String bairro, String estadoCivil, Set vendases) {
+    public Cliente(String cliId, String nome, String sobrenome, String cpf, String rg, Date dataNascimento, String endereco, String numero, String complemento, String cidade, String estado, String telFixo, String telMovel, String email, String nomeMae, String nomePai, String sexo, String bairro, String estadoCivil /*Set vendases*/) {
        this.cliId = cliId;
        this.nome = nome;
        this.sobrenome = sobrenome;
@@ -207,6 +207,7 @@ public class Cliente  implements java.io.Serializable {
     public void setVendases(Set vendases) {
         this.vendases = vendases;
     }
+
 
 
 

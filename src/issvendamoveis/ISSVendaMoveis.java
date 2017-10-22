@@ -6,6 +6,7 @@
 package issvendamoveis;
 
 import Autenticação.JFrameTelaLogin;
+import ControleCliente.JPanelCadastroCliente;
 import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 
@@ -20,6 +21,8 @@ public class ISSVendaMoveis {
      */
     public static void main(String[] args) {
         JFrameTelaLogin jFrameTelaLogin = new JFrameTelaLogin();
+        JPanelCadastroCliente jPanelCadastroCliente = new JPanelCadastroCliente();
+        jPanelCadastroCliente.setVisible(true);
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
     }
 }

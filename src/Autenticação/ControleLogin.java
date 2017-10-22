@@ -8,7 +8,7 @@ package Autenticação;
 import DAO.Acesso;
 import DAO.Funcionario;
 import Hibernate.HibernateUtil;
-import Telas.JFrameAdministrador;
+import Telas.JFrameGerente;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -107,7 +107,7 @@ public class ControleLogin {
     public void nivelAcesso(int nivelAcesso) {
         switch (nivelAcesso) {
             case 0: //Gerente
-                new JFrameAdministrador();
+                new JFrameGerente();
                 break;
             case 1: //Funcionario
                 break;
