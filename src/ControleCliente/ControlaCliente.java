@@ -33,6 +33,19 @@ public class ControlaCliente {
         return false;
     }
         
+ public Cliente consultaCliente(String cli_ID){
+     ArrayList<Cliente> listaAcessos = getListaCliente();
+     HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+     for (Cliente ac : listaAcessos) {
+            if (ac.getCliId().equals(cli_ID)) {
+                HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+                return ac;
+            }
+        }
+        HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+        return null;
+ }
+        
 public Cliente cadastraCliente(String cliId, String nome, String sobrenome, String cpf, String rg, java.util.Date dataNascimento, String endereco, String numero, String complemento, String cidade, String estado, String telFixo, String telMovel, String email, String nomeMae, String nomePai, String sexo, String bairro, String estadoCivil){
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
@@ -42,7 +55,19 @@ public Cliente cadastraCliente(String cliId, String nome, String sobrenome, Stri
         return cliente;
 }
     
-        
+public boolean persisteCliente(Cliente cliente){
+    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        try {
+            s.saveOrUpdate(cliente);
+            s.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            s.getTransaction().commit();
+            return false;
+        }
+}
+
         public ArrayList<Cliente> getListaCliente() {
         Session ses = HibernateUtil.getSessionFactory().getCurrentSession();
         ses.beginTransaction();

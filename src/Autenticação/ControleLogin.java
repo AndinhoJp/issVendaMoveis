@@ -50,6 +50,19 @@ public class ControleLogin {
         s.save(acesso);
         s.getTransaction().commit();
     }
+    
+     public Acesso consultaAcesso(String funcId){
+     ArrayList<Acesso> listaAcessos = getListaAcessos();
+     HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+     for (Acesso ac : listaAcessos) {
+            if (ac.getFuncionario().equals(funcId)) {
+                HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+                return ac;
+            }
+        }
+        HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+        return null;
+ }
 
     public ArrayList<Acesso> getListaAcessos() {
         Session ses = HibernateUtil.getSessionFactory().getCurrentSession();

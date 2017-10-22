@@ -5,8 +5,12 @@
  */
 package Telas;
 
+import ControleCliente.JPanelCadastroCliente;
+import ControleCliente.JPanelConsultaCliente;
 import Imagem.JPanel.JPanelImagemGerente;
 import java.awt.CardLayout;
+import javax.security.auth.callback.ConfirmationCallback;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -18,9 +22,8 @@ public class JFrameGerente extends javax.swing.JFrame {
     /**
      * Creates new form JFrameGerente
      */
-    
     CardLayout card;
-    
+
     public JFrameGerente() {
         initComponents();
         this.setVisible(true);
@@ -28,10 +31,10 @@ public class JFrameGerente extends javax.swing.JFrame {
         card = (CardLayout) jPanelBase.getLayout();
         jPanelBase.add(jPanelImagemGerente);
         card.show(jPanelBase, "jPanelImagemGerente");
-        
+
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        
+
     }
 
     /**
@@ -47,14 +50,14 @@ public class JFrameGerente extends javax.swing.JFrame {
         jPanelBase = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuFuncionario = new javax.swing.JMenu();
-        jRadioButtonMenuItemFuncionarioCadastrar = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItemConsultar = new javax.swing.JRadioButtonMenuItem();
+        jMenuItemFuncionarioCadastrar = new javax.swing.JMenuItem();
+        jMenuItemFuncionarioConsultar = new javax.swing.JMenuItem();
         jMenuCliente = new javax.swing.JMenu();
-        jRadioButtonMenuItemClienteCadastrar = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItemClienteConsultar = new javax.swing.JRadioButtonMenuItem();
+        jMenuItemClienteCadastrar = new javax.swing.JMenuItem();
+        jMenuItemClienteConsultar = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1020, 715));
         setResizable(false);
 
@@ -69,34 +72,35 @@ public class JFrameGerente extends javax.swing.JFrame {
 
         jMenuFuncionario.setText("Funcionários");
 
-        jRadioButtonMenuItemFuncionarioCadastrar.setSelected(true);
-        jRadioButtonMenuItemFuncionarioCadastrar.setText("Cadastrar");
-        jRadioButtonMenuItemFuncionarioCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/add_user.png"))); // NOI18N
-        jRadioButtonMenuItemFuncionarioCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItemFuncionarioCadastrarActionPerformed(evt);
-            }
-        });
-        jMenuFuncionario.add(jRadioButtonMenuItemFuncionarioCadastrar);
+        jMenuItemFuncionarioCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/add_user.png"))); // NOI18N
+        jMenuItemFuncionarioCadastrar.setText("Cadastrar");
+        jMenuFuncionario.add(jMenuItemFuncionarioCadastrar);
 
-        jRadioButtonMenuItemConsultar.setSelected(true);
-        jRadioButtonMenuItemConsultar.setText("Consultar");
-        jRadioButtonMenuItemConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/find_user.png"))); // NOI18N
-        jMenuFuncionario.add(jRadioButtonMenuItemConsultar);
+        jMenuItemFuncionarioConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/find_user.png"))); // NOI18N
+        jMenuItemFuncionarioConsultar.setText("Consultar");
+        jMenuFuncionario.add(jMenuItemFuncionarioConsultar);
 
         jMenuBar1.add(jMenuFuncionario);
 
         jMenuCliente.setText("Clientes");
 
-        jRadioButtonMenuItemClienteCadastrar.setSelected(true);
-        jRadioButtonMenuItemClienteCadastrar.setText("Cadastrar");
-        jRadioButtonMenuItemClienteCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/add_user.png"))); // NOI18N
-        jMenuCliente.add(jRadioButtonMenuItemClienteCadastrar);
+        jMenuItemClienteCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/add_user.png"))); // NOI18N
+        jMenuItemClienteCadastrar.setText("Cadastrar");
+        jMenuItemClienteCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteCadastrarActionPerformed(evt);
+            }
+        });
+        jMenuCliente.add(jMenuItemClienteCadastrar);
 
-        jRadioButtonMenuItemClienteConsultar.setSelected(true);
-        jRadioButtonMenuItemClienteConsultar.setText("Consultar");
-        jRadioButtonMenuItemClienteConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/find_user.png"))); // NOI18N
-        jMenuCliente.add(jRadioButtonMenuItemClienteConsultar);
+        jMenuItemClienteConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/find_user.png"))); // NOI18N
+        jMenuItemClienteConsultar.setText("Consultar");
+        jMenuItemClienteConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteConsultarActionPerformed(evt);
+            }
+        });
+        jMenuCliente.add(jMenuItemClienteConsultar);
 
         jMenuBar1.add(jMenuCliente);
 
@@ -120,7 +124,7 @@ public class JFrameGerente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelLogo)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, 1341, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -130,21 +134,30 @@ public class JFrameGerente extends javax.swing.JFrame {
                 .addComponent(jLabelLogo)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelBase, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
-       dispose();
+        int confirm = JOptionPane.showConfirmDialog(null, "Deseja sair?", "Confirmação", ConfirmationCallback.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jMenuSairMouseClicked
 
-    private void jRadioButtonMenuItemFuncionarioCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemFuncionarioCadastrarActionPerformed
-       /*JPanel jPanelFuncionario = new ...;
-       jPanelBase.add(jPanel);
-       card.next(jPanelBase);*/
-    }//GEN-LAST:event_jRadioButtonMenuItemFuncionarioCadastrarActionPerformed
+    private void jMenuItemClienteCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteCadastrarActionPerformed
+        JPanel jPanelCadastroCliente = new JPanelCadastroCliente();
+        jPanelBase.add(jPanelCadastroCliente);
+        card.next(jPanelBase);
+    }//GEN-LAST:event_jMenuItemClienteCadastrarActionPerformed
+
+    private void jMenuItemClienteConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteConsultarActionPerformed
+        JPanel jPanelConsultaCliente = new JPanelConsultaCliente();
+        jPanelBase.add(jPanelConsultaCliente);
+        card.next(jPanelBase);
+    }//GEN-LAST:event_jMenuItemClienteConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,11 +199,11 @@ public class JFrameGerente extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCliente;
     private javax.swing.JMenu jMenuFuncionario;
+    private javax.swing.JMenuItem jMenuItemClienteCadastrar;
+    private javax.swing.JMenuItem jMenuItemClienteConsultar;
+    private javax.swing.JMenuItem jMenuItemFuncionarioCadastrar;
+    private javax.swing.JMenuItem jMenuItemFuncionarioConsultar;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanelBase;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItemClienteCadastrar;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItemClienteConsultar;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItemConsultar;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItemFuncionarioCadastrar;
     // End of variables declaration//GEN-END:variables
 }

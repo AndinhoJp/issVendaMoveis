@@ -5,6 +5,7 @@
  */
 package Autenticação;
 
+import DAO.Acesso;
 import DAO.Funcionario;
 import javax.swing.JOptionPane;
 
@@ -63,6 +64,16 @@ public class jFrameCriaçãoLogin extends javax.swing.JFrame {
         jLabelIdFunc.setText("Identificação do funcionário:");
 
         jTextFieldIdFunc.setEditable(false);
+        jTextFieldIdFunc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldIdFuncFocusLost(evt);
+            }
+        });
+        jTextFieldIdFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIdFuncActionPerformed(evt);
+            }
+        });
 
         jLabelLogin.setText("Login:");
 
@@ -117,22 +128,6 @@ public class jFrameCriaçãoLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCadastrar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabelSenhaConfir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPasswordFieldConfirSenha))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabelSenha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordFieldSenha))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabelLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldLogin))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabelIdFunc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -140,21 +135,37 @@ public class jFrameCriaçãoLogin extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabelNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldNome))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabelLogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldLogin))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabelSenha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPasswordFieldSenha))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabelSenhaConfir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPasswordFieldConfirSenha))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jButtonCancelar)
+                        .addGap(169, 169, 169)
+                        .addComponent(jButtonCadastrar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNome)
-                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelIdFunc)
                     .addComponent(jTextFieldIdFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNome)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelLogin)
                     .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -189,6 +200,7 @@ public class jFrameCriaçãoLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        //Funcionario funcionario = jTextFieldIdFunc.getText();
         if(jPasswordFieldSenha.getText().equals("") ||
            jPasswordFieldConfirSenha.getText().equals("") ||
            jTextFieldLogin.getText().equals("")){
@@ -198,7 +210,11 @@ public class jFrameCriaçãoLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "As senhas digitadas não conferem. Verifique e tente novamente.");
         }
         if(confereId.confereDuplicidade(jTextFieldLogin.getText()) == false){
-            
+            try{
+               // Acesso acesso = new Autenticação.ControleLogin().criarAcesso(jTextFieldLogin.getText(), jTextFieldIdFunc.getText(), jPasswordFieldSenha.getText());
+            } catch(Exception e){
+                
+            }
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
@@ -225,6 +241,14 @@ if(jPasswordFieldSenha.getText().equals("")){
     jPasswordFieldConfirSenha.setText("123456");
 }
     }//GEN-LAST:event_jPasswordFieldConfirSenhaFocusLost
+
+    private void jTextFieldIdFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdFuncActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdFuncActionPerformed
+
+    private void jTextFieldIdFuncFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldIdFuncFocusLost
+        
+    }//GEN-LAST:event_jTextFieldIdFuncFocusLost
 
     /**
      * @param args the command line arguments

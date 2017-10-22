@@ -5,19 +5,15 @@
  */
 package ControleCliente;
 
-import Imagem.JPanel.JPanelImagemGerente;
-import java.awt.CardLayout;
+import DAO.Cliente;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
  * @author ander
  */
-
-
 public class JPanelCadastroCliente extends javax.swing.JPanel {
 
     /**
@@ -60,14 +56,27 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
         model.addElement("Tocantins");
         return model;
     }
-    
-    
-    public boolean CPF(String CPF){
-        
-     return true;   
+
+    private final int[] pesoCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
+
+    private static int calcularDigito(String str, int[] peso) {
+        int soma = 0;
+        for (int indice = str.length() - 1, digito; indice >= 0; indice--) {
+            digito = Integer.parseInt(str.substring(indice, indice + 1));
+            soma += digito * peso[peso.length - str.length() + indice];
+        }
+        soma = 11 - soma % 11;
+        return soma > 9 ? 0 : soma;
     }
-    
-    
+
+    public boolean validadorCPF(String cpf) {
+        if ((cpf == null) || (cpf.length() != 11)) {
+            return false;
+        }
+        Integer digito1 = calcularDigito(cpf.substring(0, 9), pesoCPF);
+        Integer digito2 = calcularDigito(cpf.substring(0, 9) + digito1, pesoCPF);
+        return cpf.equals(cpf.substring(0, 9) + digito1.toString() + digito2.toString());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,7 +98,7 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
         jTextFieldRG = new javax.swing.JTextField();
         jLabelRG = new javax.swing.JLabel();
         jLabelDataNascimento = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooserDataNascimento = new com.toedter.calendar.JDateChooser();
         jLabelEndereço = new javax.swing.JLabel();
         jTextFieldEndereço = new javax.swing.JTextField();
         jLabelEndNumero = new javax.swing.JLabel();
@@ -115,7 +124,6 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
         jLabelNomePai = new javax.swing.JLabel();
         jTextFieldNomePai = new javax.swing.JTextField();
         jButtonCadastrar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
         jFormattedTextFieldTelRes = new javax.swing.JFormattedTextField();
         try{
             javax.swing.text.MaskFormatter telefone= new javax.swing.text.MaskFormatter("(##)####-####");
@@ -139,6 +147,8 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
         }
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        setMaximumSize(new java.awt.Dimension(1000, 600));
+        setMinimumSize(new java.awt.Dimension(1000, 600));
 
         jLabelCriaçãoCliente.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelCriaçãoCliente.setText("Cadastro de novo cliente");
@@ -164,7 +174,7 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
         jLabelDataNascimento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelDataNascimento.setText("Data de nascimento:");
 
-        jDateChooser1.setDateFormatString("yyyy-MM-dd");
+        jDateChooserDataNascimento.setDateFormatString("yyyy-MM-dd");
 
         jLabelEndereço.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelEndereço.setText("Endereço:");
@@ -245,14 +255,6 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
             }
         });
 
-        jButtonCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-
         jFormattedTextFieldTelRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextFieldTelResActionPerformed(evt);
@@ -279,8 +281,6 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonCancelar)
-                        .addGap(18, 18, 18)
                         .addComponent(jButtonCadastrar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,8 +297,8 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabelEstado)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
+                                .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
                                 .addComponent(jLabelBairro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -352,7 +352,7 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabelDataNascimento)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jDateChooserDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLabelEstadoCivil)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -398,7 +398,7 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
                                 .addComponent(jTextFieldRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabelRG)
                                 .addComponent(jLabelDataNascimento))
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jDateChooserDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelEstadoCivil)
                         .addComponent(jComboBoxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -433,9 +433,7 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
                     .addComponent(jLabelNomePai)
                     .addComponent(jTextFieldNomePai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrar)
-                    .addComponent(jButtonCancelar))
+                .addComponent(jButtonCadastrar)
                 .addContainerGap())
         );
 
@@ -459,29 +457,30 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldNomeMaeActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        if(jFormattedTextFieldCPFCliente.getText() == null ||
-           jTextFieldPrimeiroNome.getText() == null ||
-           jTextFieldSobrenome.getText() == null ||
-           jTextFieldRG.getText() == null ||
-           jTextFieldEndereço.getText() == null ||
-           jTextFieldEndNumero.getText() == null ||
-           jTextFieldCidade.getText() == null ||
-           jTextFieldBairro.getText() == null ||
-           jFormattedTextFieldTelRes.getText() == null ||
-           jTextFieldNomeMae.getText() == null ||
-           jTextFieldNomePai.getText() == null){
-            JOptionPane.showConfirmDialog(null, "Um dos campos está em branco!");
-        }else{
-            
+        if (jFormattedTextFieldCPFCliente.getText() == null
+                || jTextFieldPrimeiroNome.getText() == null
+                || jTextFieldSobrenome.getText() == null
+                || jTextFieldRG.getText() == null
+                || jTextFieldEndereço.getText() == null
+                || jTextFieldEndNumero.getText() == null
+                || jTextFieldCidade.getText() == null
+                || jTextFieldBairro.getText() == null
+                || jFormattedTextFieldTelRes.getText() == null
+                || jTextFieldNomeMae.getText() == null
+                || jTextFieldNomePai.getText() == null) {
+            JOptionPane.showConfirmDialog(null, "Um dos campos obreigatório está em branco!");
+        } else {
+            String cpf = jFormattedTextFieldCPFCliente.getText();
+            cpf = cpf.replace(".", "");
+            cpf = cpf.replace("-", "");
+            try {
+                Cliente cliente = new ControlaCliente().cadastraCliente(cpf, jTextFieldPrimeiroNome.getText(), jTextFieldSobrenome.getText(), jFormattedTextFieldCPFCliente.getText(), jTextFieldRG.getText(), jDateChooserDataNascimento.getDate(), jTextFieldEndereço.getText(), jTextFieldEndNumero.getText(), jTextFieldEndComplemento.getText(), jTextFieldCidade.getText(), jComboBoxEstado.getSelectedItem().toString(), jFormattedTextFieldTelCel.getText(), jFormattedTextFieldTelCel.getText(), jTextFieldEmail.getText(), jTextFieldNomeMae.getText(), jTextFieldNomePai.getText(), jComboBoxSexo.getSelectedItem().toString(), jTextFieldBairro.getText(), jComboBoxEstadoCivil.getSelectedItem().toString());
+                JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!");
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar o novo cliente!");
+            }
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
-
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        int resp = JOptionPane.showConfirmDialog(null, "Deseja cancelar o cadastro do cliente?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        if(resp == JOptionPane.YES_OPTION){
-            
-        }
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jComboBoxEstadoCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEstadoCivilActionPerformed
         // TODO add your handling code here:
@@ -496,21 +495,71 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jFormattedTextFieldCPFClienteActionPerformed
 
     private void jFormattedTextFieldCPFClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCPFClienteFocusLost
-        if(CPF(jFormattedTextFieldCPFCliente.getText()) == false){
-            JOptionPane.showConfirmDialog(null, "O CPF informado é invalido. Confira os números e tente novamente.");
+        String cpf = jFormattedTextFieldCPFCliente.getText();
+        cpf = cpf.replace(".", "");
+        cpf = cpf.replace("-", "");
+        if (validadorCPF(cpf) == false) {
+            JOptionPane.showMessageDialog(null, "O CPF informado é invalido. Confira os números e tente novamente.");
+        } else {
+            boolean valCPF = new ControlaCliente().verificaCliente(cpf);
+            if (valCPF == true) {
+                JOptionPane.showMessageDialog(null, "O CPF informado já está cadastro no sistema!");
+                jTextFieldBairro.setEnabled(false);
+                jTextFieldCidade.setEnabled(false);
+                jTextFieldEmail.setEnabled(false);
+                jTextFieldEndComplemento.setEnabled(false);
+                jTextFieldEndNumero.setEnabled(false);
+                jTextFieldEndereço.setEnabled(false);
+                jTextFieldNomeMae.setEnabled(false);
+                jTextFieldNomePai.setEnabled(false);
+                jTextFieldPrimeiroNome.setEnabled(false);
+                jTextFieldRG.setEnabled(false);
+                jTextFieldSobrenome.setEnabled(false);
+                jFormattedTextFieldTelCel.setEnabled(false);
+                jFormattedTextFieldTelRes.setEnabled(false);
+            } else {
+                jTextFieldBairro.setEnabled(true);
+                jTextFieldCidade.setEnabled(true);
+                jTextFieldEmail.setEnabled(true);
+                jTextFieldEndComplemento.setEnabled(true);
+                jTextFieldEndNumero.setEnabled(true);
+                jTextFieldEndereço.setEnabled(true);
+                jTextFieldNomeMae.setEnabled(true);
+                jTextFieldNomePai.setEnabled(true);
+                jTextFieldPrimeiroNome.setEnabled(true);
+                jTextFieldRG.setEnabled(true);
+                jTextFieldSobrenome.setEnabled(true);
+                jFormattedTextFieldTelCel.setEnabled(true);
+                jFormattedTextFieldTelRes.setEnabled(true);
+            }
         }
-        
-        
     }//GEN-LAST:event_jFormattedTextFieldCPFClienteFocusLost
 
+    public void limpaCampos(){
+                jTextFieldBairro.setText("");
+                jTextFieldCidade.setText("");
+                jTextFieldEmail.setText("");
+                jTextFieldEndComplemento.setText("");
+                jTextFieldEndNumero.setText("");
+                jTextFieldEndereço.setText("");
+                jTextFieldNomeMae.setText("");
+                jTextFieldNomePai.setText("");
+                jTextFieldPrimeiroNome.setText("");
+                jTextFieldRG.setText("");
+                jTextFieldSobrenome.setText("");
+                jFormattedTextFieldTelCel.setText("");
+                jFormattedTextFieldTelRes.setText("");
+                jFormattedTextFieldCPFCliente.setText("");
+
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
-    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JComboBox<String> jComboBoxEstado;
     private javax.swing.JComboBox<String> jComboBoxEstadoCivil;
     private javax.swing.JComboBox<String> jComboBoxSexo;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooserDataNascimento;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPFCliente;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelCel;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelRes;
