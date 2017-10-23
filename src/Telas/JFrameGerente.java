@@ -5,6 +5,7 @@
  */
 package Telas;
 
+import ControlaFuncionario.ControlaFalta;
 import ControlaFuncionario.JPanelCadastroFuncionario;
 import ControlaFuncionario.JPanelListaFuncionario;        
 import ControleCliente.JPanelCadastroCliente;
