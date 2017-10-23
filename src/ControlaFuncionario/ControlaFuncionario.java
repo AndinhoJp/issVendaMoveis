@@ -1,7 +1,7 @@
 package ControlaFuncionario;
 
 import DAO.Funcionario;
-import Util.HibernateUtil;
+import Hibernate.HibernateUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -42,7 +42,7 @@ public class ControlaFuncionario {
     public Funcionario criarFuncionario(String idFunc, String nome, String cpf, String rg, Date dataNascimento, String estadoCivil, String nomeConjuge, String endereco, String numero, String complemento, String cidade, String estado, String cargo, Date dataContratacao, Integer nivelAcesso, String sexo, String bairro, String cep, String telefone, Integer status) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
-        Funcionario funcionario = new Funcionario(idFunc, nome, cpf, rg, dataNascimento, estadoCivil, nomeConjuge, endereco, numero, complemento, cidade, estado, cargo, dataContratacao, nivelAcesso, sexo, bairro, cep, telefone, status);
+        Funcionario funcionario = new Funcionario(idFunc,  nome,  cpf,  rg,  dataNascimento,  estadoCivil,  nomeConjuge,  endereco,  numero,  complemento,  cidade,  estado,  cargo,  dataContratacao,  nivelAcesso,  sexo,  bairro,  cep,  telefone,  status);
         s.save(funcionario);
         s.getTransaction().commit();
         return funcionario;

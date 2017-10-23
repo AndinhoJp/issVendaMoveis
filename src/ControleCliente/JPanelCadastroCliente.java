@@ -88,7 +88,7 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        jLabelCriaçãoCliente = new javax.swing.JLabel();
+        jLabelCriacaoCliente = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabelCPFCliente = new javax.swing.JLabel();
         jLabelPrimeiroNome = new javax.swing.JLabel();
@@ -150,8 +150,8 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(1000, 600));
         setMinimumSize(new java.awt.Dimension(1000, 600));
 
-        jLabelCriaçãoCliente.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabelCriaçãoCliente.setText("Cadastro de novo cliente");
+        jLabelCriacaoCliente.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabelCriacaoCliente.setText("Cadastro de novo cliente");
 
         jLabelCPFCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelCPFCliente.setText("CPF do cliente:");
@@ -304,7 +304,7 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
                                 .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabelCriaçãoCliente))
+                                .addComponent(jLabelCriacaoCliente))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -375,7 +375,7 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelCriaçãoCliente)
+                .addComponent(jLabelCriacaoCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
@@ -566,7 +566,7 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCPFCliente;
     private javax.swing.JLabel jLabelCidade;
-    private javax.swing.JLabel jLabelCriaçãoCliente;
+    private javax.swing.JLabel jLabelCriacaoCliente;
     private javax.swing.JLabel jLabelDataNascimento;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelEndComplemento;

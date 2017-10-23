@@ -75,10 +75,20 @@ public class JFrameGerente extends javax.swing.JFrame {
 
         jMenuItemFuncionarioCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/add_user.png"))); // NOI18N
         jMenuItemFuncionarioCadastrar.setText("Cadastrar");
+        jMenuItemFuncionarioCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFuncionarioCadastrarActionPerformed(evt);
+            }
+        });
         jMenuFuncionario.add(jMenuItemFuncionarioCadastrar);
 
         jMenuItemFuncionarioConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/find_user.png"))); // NOI18N
         jMenuItemFuncionarioConsultar.setText("Consultar");
+        jMenuItemFuncionarioConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFuncionarioConsultarActionPerformed(evt);
+            }
+        });
         jMenuFuncionario.add(jMenuItemFuncionarioConsultar);
 
         jMenuBar1.add(jMenuFuncionario);
@@ -125,7 +135,7 @@ public class JFrameGerente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelLogo)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, 1341, Short.MAX_VALUE))
+                    .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, 990, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -160,17 +170,18 @@ public class JFrameGerente extends javax.swing.JFrame {
         card.next(jPanelBase);
     }//GEN-LAST:event_jMenuItemClienteConsultarActionPerformed
 
-    private void jMenuItemFuncionarioCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+    private void jMenuItemFuncionarioCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionarioCadastrarActionPerformed
         JPanel jPanelCadastroFuncionario = new JPanelCadastroFuncionario();
         jPanelBase.add(jPanelCadastroFuncionario);
         card.next(jPanelBase);
-    }                                                         
+    }//GEN-LAST:event_jMenuItemFuncionarioCadastrarActionPerformed
 
-    private void jMenuItemFuncionarioConsultarActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+    private void jMenuItemFuncionarioConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionarioConsultarActionPerformed
         JPanel jPanelListaFuncionario = new JPanelListaFuncionario();
         jPanelBase.add(jPanelListaFuncionario);
         card.next(jPanelBase);
-    }                           
+    }//GEN-LAST:event_jMenuItemFuncionarioConsultarActionPerformed
+                        
     /**
      * @param args the command line arguments
      */

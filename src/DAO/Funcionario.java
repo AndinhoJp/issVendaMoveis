@@ -47,7 +47,7 @@ public class Funcionario  implements java.io.Serializable {
         this.cpf = cpf;
         this.endereco = endereco;
     }
-    public Funcionario(String idFunc, String nome, String cpf, String rg, Date dataNascimento, String estadoCivil, String nomeConjuge, String endereco, String numero, String complemento, String cidade, String estado, String cargo, Date dataContratacao, Integer nivelAcesso, String sexo, String bairro, String cep, String telefone, Integer status, Set vendases, Set faltases, Set acessos, Set pedidoEstoques) {
+    public Funcionario(String idFunc, String nome, String cpf, String rg, Date dataNascimento, String estadoCivil, String nomeConjuge, String endereco, String numero, String complemento, String cidade, String estado, String cargo, Date dataContratacao, Integer nivelAcesso, String sexo, String bairro, String cep, String telefone, Integer status)/*, Set vendases, Set faltases, Set acessos, Set pedidoEstoques)*/ {
        this.idFunc = idFunc;
        this.nome = nome;
        this.cpf = cpf;
@@ -68,10 +68,11 @@ public class Funcionario  implements java.io.Serializable {
        this.cep = cep;
        this.telefone = telefone;
        this.status = status;
-       this.vendases = vendases;
+/*       this.vendases = vendases;
        this.faltases = faltases;
        this.acessos = acessos;
        this.pedidoEstoques = pedidoEstoques;
+*/
     }
    
     public String getIdFunc() {
