@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "Faltas", schema = "Vendas", catalog = "")
-public class FaltasEntity {
+@Table(name = "Faltas", schema = "Vendas")
+public class AbsencesEntity {
     private String idFaltas;
     private Integer justificativaFlag;
     private String justificativatextual;
@@ -56,7 +56,7 @@ public class FaltasEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        FaltasEntity that = (FaltasEntity) o;
+        AbsencesEntity that = (AbsencesEntity) o;
 
         if (idFaltas != null ? !idFaltas.equals(that.idFaltas) : that.idFaltas != null) return false;
         if (justificativaFlag != null ? !justificativaFlag.equals(that.justificativaFlag) : that.justificativaFlag != null)

@@ -1,0 +1,133 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :22:22:p, comp JLabelFotoProduto:::p:235:p, space :6:6:p, par l {comp JPanelDimensao::l:::x, seq {par l {seq {comp JLabelNomeProduto:::p::p, space :18:18:p, comp JTextNomeProduto:::p:591:p}, seq {comp JLabelMarca:::p::p, space :85:85:p, comp JTextMarca:::p:102:p, space :18:18:p, comp JLabelQuantidade:::p::p, space :18:18:p, comp JTextQuantidade:::p:102:p}, seq {comp JLabelIDProduto:::p::p, space :::p, comp JTextIDProduto:::p:102:p, space :p:24:p, comp JLabelPreçoCompra:::p::p, space :10:10:p, comp JTextPreçoCompra:::p:102:p, space :10:10:p, comp JLabelPreçoVenda:::p::p, space :::p, comp JTextPreçoVenda:::p:102:p}}, space :0:16:x}}}, seq {space :22:22:p, comp JLabelDescrição:::p::p}, seq {space :22:22:p, comp jScrollPane1:::p:960:p}, seq {space :790:790:p, comp save:::p::p, space :10:10:p, comp close:::p::p}}"
+			"$verticalGroup": "par l {seq {space :45:45:p, par l {comp JLabelFotoProduto:::p:197:p, seq {space :12:12:p, par l {seq {space :1:1:p, comp JLabelNomeProduto:::p::p}, comp JTextNomeProduto:::p::p}, space :11:11:p, par l {comp JTextMarca:::p::p, comp JTextQuantidade:::p::p, seq {space :1:1:p, par l {comp JLabelMarca:::p::p, comp JLabelQuantidade:::p::p}}}, space :6:6:p, comp JPanelDimensao:::p::p, space :11:11:p, par l {comp JTextPreçoCompra:::p::p, seq {space :1:1:p, par l {par b {comp JLabelIDProduto::b:p::p, comp JTextIDProduto::b:p::p}, comp JLabelPreçoCompra:::p::p, par b {comp JLabelPreçoVenda::b:p::p, comp JTextPreçoVenda::b:p::p}}}}}}, space :89:89:p, comp JLabelDescrição:::p::p, space :6:6:p, comp jScrollPane1:::p:123:p, space :6:6:p, par l {comp save:::p::p, comp close:::p::p}}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 2
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "jScrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "jTextAreaDescriçãoProduto"
+					"columns": 20
+					"rows": 5
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "JLabelDescrição"
+				"font": new java.awt.Font( "Times New Roman", 1, 14 )
+				"text": "Descrição do Produto:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTextPreçoCompra"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "JLabelPreçoCompra"
+				"font": new java.awt.Font( "Times New Roman", 1, 14 )
+				"text": "Preço de Compra:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTextIDProduto"
+				"editable": false
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {comp JLabeLargura:::p::p, space :::p, comp JTextLargura:::p:102:p, space u:::p, comp JLabeAltura:::p::p, space :::p, comp JTextAltura:::p:102:p, space u:::p, comp JLabeProfundidade:::p::p, space :::p, comp JTextProfundidade:::p:102:p, space :0:0:x}}"
+				"$verticalGroup": "par l {par b {comp JLabeLargura::b:p::p, comp JTextLargura::b:p::p, comp JLabeAltura::b:p::p, comp JTextAltura::b:p::p, comp JTextProfundidade::b:p::p, comp JLabeProfundidade::b:p::p}}"
+			} ) {
+				name: "JPanelDimensao"
+				"border": new javax.swing.border.TitledBorder( "Dimensão do Produto:" )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "JLabeLargura"
+					"font": new java.awt.Font( "Times New Roman", 1, 14 )
+					"text": "Largura:"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "JTextLargura"
+					"editable": false
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "JLabeAltura"
+					"font": new java.awt.Font( "Times New Roman", 1, 14 )
+					"text": "Altura:"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "JTextAltura"
+					"editable": false
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "JTextProfundidade"
+					"editable": false
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "JLabeProfundidade"
+					"font": new java.awt.Font( "Times New Roman", 1, 14 )
+					"text": "Profundidade:"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "JLabelIDProduto"
+				"font": new java.awt.Font( "Times New Roman", 1, 14 )
+				"text": "ID do Produto:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTextMarca"
+				"editable": false
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "JTextMarcaActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "JLabelQuantidade"
+				"font": new java.awt.Font( "Times New Roman", 1, 14 )
+				"text": "Quantidade:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTextQuantidade"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "JLabelMarca"
+				"font": new java.awt.Font( "Times New Roman", 1, 14 )
+				"text": "Marca:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "JLabelFotoProduto"
+				"horizontalAlignment": 0
+				"text": "Inserir Foto"
+				"border": new javax.swing.border.TitledBorder( "Imagem X-1/X" )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "JLabelFotoProdutoMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "JLabelNomeProduto"
+				"font": new java.awt.Font( "Times New Roman", 1, 14 )
+				"text": "Nome do Produto:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTextNomeProduto"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "close"
+				"text": "Fechar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonFecharActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "save"
+				"text": "Salvar Alterações"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonSalvarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "JLabelPreçoVenda"
+				"font": new java.awt.Font( "Times New Roman", 1, 14 )
+				"text": "Preço de Venda:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTextPreçoVenda"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "JTextPreçoVendaActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 1000, 555 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

@@ -1,0 +1,45 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp jLabelLogomarca::l:p::p, seq l {space :p:44:p, par t:::p {seq {comp jButtonCancelar:::p::p, space :::x, comp jButtonAutenticar:::p::p}, comp jTextFieldLogin::::226:x, comp jPassword:::::x}}}, space :::p}}"
+			"$verticalGroup": "par l {seq t {space :::p, comp jLabelLogomarca:::p::p, space s:::p, comp jTextFieldLogin:::p::p, space s:::p, comp jPassword:::p::p, space ::19:x, par b {comp jButtonAutenticar::b:p::p, comp jButtonCancelar::b:p::p}, space :::p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			"title": "Autenticação"
+			"resizable": false
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "jTextFieldLogin"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "jTextFieldLoginFocusGained", true ) )
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "jTextFieldLoginFocusLost", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jTextFieldLoginActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabelLogomarca"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/FundoTelas/redebras-topo.jpg" )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jButtonAutenticar"
+				"text": "Logar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonAutenticarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jButtonCancelar"
+				"text": "Cancelar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonCancelarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "jPassword"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "jPasswordFocusGained", true ) )
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "jPasswordFocusLost", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jPasswordActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "jPasswordKeyPressed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

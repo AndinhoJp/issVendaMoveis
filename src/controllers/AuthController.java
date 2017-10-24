@@ -7,8 +7,8 @@
 
 package controllers;
 
-import entities.AcessoEntity;
-import entities.FuncionarioEntity;
+import entities.AccessEntity;
+import entities.FunctionaryEntity;
 import org.hibernate.Session;
 import utils.HibernateUtil;
 import vision.JFrameAdministrador;
@@ -27,11 +27,12 @@ public class AuthController {
     public boolean verificaAcesso(String login, String senha) {
         if (verificaLogin(login)) {
             if (verificaSenha(login, senha)) {
-                ArrayList<AcessoEntity> listaAcessos = new AuthController().getListaAcessos();
+                ArrayList<AccessEntity> listaAcessos = new AuthController().getListaAcessos();
                 HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-                for (AcessoEntity ac : listaAcessos) {
+                for (AccessEntity ac : listaAcessos) {
                     if (ac.getLogin().equals(login)) {
-                        nivelAcesso(ac.getFuncionario().getNivelAcesso());
+                        Integer funcionarioId = ac.getFuncionarioId();
+                        nivelAcesso(HibernateUtil.getSessionFactory().getCurrentSession().get(FunctionaryEntity.class, funcionarioId).getNivelAcesso());
                     }
                 }
                 HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
@@ -46,22 +47,23 @@ public class AuthController {
         }
     }
 
-    public void criarAcesso(String login, FuncionarioEntity funcionario, String senha) {
+    public void criarAcesso(String login, FunctionaryEntity funcionario, String senha) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
-        AcessoEntity acesso = new AcessoEntity(login, funcionario, senha);
+        AccessEntity acesso = new AccessEntity(login, Integer.parseInt(funcionario.getIdFunc()), senha);
         s.save(acesso);
         s.getTransaction().commit();
     }
 
-    public ArrayList<AcessoEntity> getListaAcessos() {
+    public ArrayList<AccessEntity> getListaAcessos() {
         Session ses = HibernateUtil.getSessionFactory().getCurrentSession();
         ses.beginTransaction();
-        ArrayList<AcessoEntity> listaAcessos = (ArrayList<AcessoEntity>) ses.createQuery("From AcessoEntity").list();
-        Collections.sort(listaAcessos, new Comparator<AcessoEntity>() {
+        ArrayList<AccessEntity> listaAcessos = (ArrayList<AccessEntity>) ses.createQuery("From AccessEntity").list();
+        Collections.sort(listaAcessos, new Comparator<AccessEntity>() {
             @Override
-            public int compare(AcessoEntity a1, AcessoEntity a2) {
-                return a1.getFuncionario().getNome().compareTo(a2.getFuncionario().getNome());
+            public int compare(AccessEntity a1, AccessEntity a2) {
+                return HibernateUtil.getSessionFactory().getCurrentSession().get(FunctionaryEntity.class, a1.getFuncionarioId()).getNome()
+                        .compareTo(HibernateUtil.getSessionFactory().getCurrentSession().get(FunctionaryEntity.class, a2.getFuncionarioId()).getNome());
             }
         });
         ses.getTransaction().commit();
@@ -69,9 +71,9 @@ public class AuthController {
     }
 
     public boolean confereDuplicidade(String login) {
-        ArrayList<AcessoEntity> listaAcessos = getListaAcessos();
+        ArrayList<AccessEntity> listaAcessos = getListaAcessos();
         HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-        for (AcessoEntity ac : listaAcessos) {
+        for (AccessEntity ac : listaAcessos) {
             if (ac.getLogin().equals(login)) {
                 HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
                 return false;
@@ -82,9 +84,9 @@ public class AuthController {
     }
 
     public boolean verificaLogin(String login) {
-        ArrayList<AcessoEntity> listaAcessos = getListaAcessos();
+        ArrayList<AccessEntity> listaAcessos = getListaAcessos();
         HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-        for (AcessoEntity ac : listaAcessos) {
+        for (AccessEntity ac : listaAcessos) {
             if (ac.getLogin().equals(login)) {
                 HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
                 return true;
@@ -95,9 +97,9 @@ public class AuthController {
     }
 
     public boolean verificaSenha(String login, String senha) {
-        ArrayList<AcessoEntity> listaAcessos = getListaAcessos();
+        ArrayList<AccessEntity> listaAcessos = getListaAcessos();
         HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-        for (AcessoEntity a : listaAcessos) {
+        for (AccessEntity a : listaAcessos) {
             if (a.getLogin().equals(login) && a.getSenha().equals(senha)) {
                 HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
                 return true;

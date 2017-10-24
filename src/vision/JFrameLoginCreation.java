@@ -1,7 +1,9 @@
 package vision;
 
+import java.awt.*;
+import java.awt.event.*;
 import controllers.AuthController;
-import entities.FuncionarioEntity;
+import entities.FunctionaryEntity;
 
 import javax.swing.*;
 
@@ -9,7 +11,7 @@ public class JFrameLoginCreation extends javax.swing.JFrame {
 
     AuthController confereId = new AuthController();
 
-    public JFrameLoginCreation(FuncionarioEntity funcionario) {
+    public JFrameLoginCreation(FunctionaryEntity funcionario) {
         this.setTitle("Criação do acesso de - " + funcionario.getIdFunc());
         jPasswordFieldSenha.setText("123456");
         jPasswordFieldConfirSenha.setText("123456");
@@ -27,146 +29,148 @@ public class JFrameLoginCreation extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // Generated using JFormDesigner Evaluation license - GregÃ³rio MagalhÃ£es
     private void initComponents() {
+        jLabelNome = new JLabel();
+        jTextFieldNome = new JTextField();
+        jLabelIdFunc = new JLabel();
+        jTextFieldIdFunc = new JTextField();
+        jLabelLogin = new JLabel();
+        jLabelSenha = new JLabel();
+        jLabelSenhaConfir = new JLabel();
+        jTextFieldLogin = new JTextField();
+        jPasswordFieldSenha = new JPasswordField();
+        jPasswordFieldConfirSenha = new JPasswordField();
+        jButtonCadastrar = new JButton();
+        jButtonCancelar = new JButton();
 
-        jLabelNome = new javax.swing.JLabel();
-        jTextFieldNome = new javax.swing.JTextField();
-        jLabelIdFunc = new javax.swing.JLabel();
-        jTextFieldIdFunc = new javax.swing.JTextField();
-        jLabelLogin = new javax.swing.JLabel();
-        jLabelSenha = new javax.swing.JLabel();
-        jLabelSenhaConfir = new javax.swing.JLabel();
-        jTextFieldLogin = new javax.swing.JTextField();
-        jPasswordFieldSenha = new javax.swing.JPasswordField();
-        jPasswordFieldConfirSenha = new javax.swing.JPasswordField();
-        jButtonCadastrar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        //======== this ========
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        Container contentPane = getContentPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        //---- jLabelNome ----
         jLabelNome.setText("Nome:");
 
+        //---- jTextFieldNome ----
         jTextFieldNome.setEditable(false);
-        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomeActionPerformed(evt);
-            }
-        });
+        jTextFieldNome.addActionListener(e -> jTextFieldNomeActionPerformed(e));
 
-        jLabelIdFunc.setText("Identificação do funcionário:");
+        //---- jLabelIdFunc ----
+        jLabelIdFunc.setText("Identifica\u00e7\u00e3o do funcion\u00e1rio:");
 
+        //---- jTextFieldIdFunc ----
         jTextFieldIdFunc.setEditable(false);
 
+        //---- jLabelLogin ----
         jLabelLogin.setText("Login:");
 
+        //---- jLabelSenha ----
         jLabelSenha.setText("Senha:");
 
-        jLabelSenhaConfir.setText("Confirmação da senha:");
+        //---- jLabelSenhaConfir ----
+        jLabelSenhaConfir.setText("Confirma\u00e7\u00e3o da senha:");
 
-        jTextFieldLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldLoginActionPerformed(evt);
-            }
-        });
+        //---- jTextFieldLogin ----
+        jTextFieldLogin.addActionListener(e -> jTextFieldLoginActionPerformed(e));
 
+        //---- jPasswordFieldSenha ----
         jPasswordFieldSenha.setText("jPasswordField1");
-        jPasswordFieldSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPasswordFieldSenhaFocusGained(evt);
+        jPasswordFieldSenha.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                jPasswordFieldSenhaFocusGained(e);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPasswordFieldSenhaFocusLost(evt);
+            @Override
+            public void focusLost(FocusEvent e) {
+                jPasswordFieldSenhaFocusLost(e);
             }
         });
 
+        //---- jPasswordFieldConfirSenha ----
         jPasswordFieldConfirSenha.setText("jPasswordField1");
-        jPasswordFieldConfirSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPasswordFieldConfirSenhaFocusGained(evt);
+        jPasswordFieldConfirSenha.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                jPasswordFieldConfirSenhaFocusGained(e);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPasswordFieldConfirSenhaFocusLost(evt);
+            @Override
+            public void focusLost(FocusEvent e) {
+                jPasswordFieldConfirSenhaFocusLost(e);
             }
         });
 
+        //---- jButtonCadastrar ----
         jButtonCadastrar.setText("Cadastrar");
-        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarActionPerformed(evt);
-            }
-        });
+        jButtonCadastrar.addActionListener(e -> jButtonCadastrarActionPerformed(e));
 
+        //---- jButtonCancelar ----
         jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
+        jButtonCancelar.addActionListener(e -> jButtonCancelarActionPerformed(e));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButtonCancelar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jButtonCadastrar))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabelSenhaConfir)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jPasswordFieldConfirSenha))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabelSenha)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jPasswordFieldSenha))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabelLogin)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextFieldLogin))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabelIdFunc)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextFieldIdFunc))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabelNome)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        GroupLayout contentPaneLayout = new GroupLayout(contentPane);
+        contentPane.setLayout(contentPaneLayout);
+        contentPaneLayout.setHorizontalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(jButtonCancelar)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonCadastrar))
+                        .addGroup(GroupLayout.Alignment.LEADING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(jLabelSenhaConfir)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jPasswordFieldConfirSenha))
+                        .addGroup(GroupLayout.Alignment.LEADING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(jLabelSenha)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jPasswordFieldSenha))
+                        .addGroup(GroupLayout.Alignment.LEADING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(jLabelLogin)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextFieldLogin))
+                        .addGroup(GroupLayout.Alignment.LEADING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(jLabelIdFunc)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextFieldIdFunc))
+                        .addGroup(GroupLayout.Alignment.LEADING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(jLabelNome)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextFieldNome, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelNome)
-                                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelIdFunc)
-                                        .addComponent(jTextFieldIdFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelLogin)
-                                        .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelSenha)
-                                        .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelSenhaConfir)
-                                        .addComponent(jPasswordFieldConfirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButtonCadastrar)
-                                        .addComponent(jButtonCancelar))
-                                .addContainerGap())
+        contentPaneLayout.setVerticalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelNome)
+                        .addComponent(jTextFieldNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelIdFunc)
+                        .addComponent(jTextFieldIdFunc, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelLogin)
+                        .addComponent(jTextFieldLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelSenha)
+                        .addComponent(jPasswordFieldSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelSenhaConfir)
+                        .addComponent(jPasswordFieldConfirSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(30, 30, 30)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonCadastrar)
+                        .addComponent(jButtonCancelar))
+                    .addContainerGap())
         );
-
         pack();
+        setLocationRelativeTo(getOwner());
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
@@ -251,17 +255,18 @@ public class JFrameLoginCreation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCadastrar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JLabel jLabelIdFunc;
-    private javax.swing.JLabel jLabelLogin;
-    private javax.swing.JLabel jLabelNome;
-    private javax.swing.JLabel jLabelSenha;
-    private javax.swing.JLabel jLabelSenhaConfir;
-    private javax.swing.JPasswordField jPasswordFieldConfirSenha;
-    private javax.swing.JPasswordField jPasswordFieldSenha;
-    private javax.swing.JTextField jTextFieldIdFunc;
-    private javax.swing.JTextField jTextFieldLogin;
-    private javax.swing.JTextField jTextFieldNome;
+    // Generated using JFormDesigner Evaluation license - GregÃ³rio MagalhÃ£es
+    private JLabel jLabelNome;
+    private JTextField jTextFieldNome;
+    private JLabel jLabelIdFunc;
+    private JTextField jTextFieldIdFunc;
+    private JLabel jLabelLogin;
+    private JLabel jLabelSenha;
+    private JLabel jLabelSenhaConfir;
+    private JTextField jTextFieldLogin;
+    private JPasswordField jPasswordFieldSenha;
+    private JPasswordField jPasswordFieldConfirSenha;
+    private JButton jButtonCadastrar;
+    private JButton jButtonCancelar;
     // End of variables declaration//GEN-END:variables
 }

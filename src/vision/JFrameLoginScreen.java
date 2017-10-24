@@ -1,5 +1,10 @@
 package vision;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle;
 import controllers.AuthController;
 import org.hibernate.Session;
 import utils.HibernateUtil;
@@ -13,7 +18,7 @@ public class JFrameLoginScreen extends javax.swing.JFrame {
      */
     public JFrameLoginScreen() {
         initComponents();
-        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+//        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         jPassword.setText("12345");
@@ -27,103 +32,99 @@ public class JFrameLoginScreen extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // Generated using JFormDesigner Evaluation license - unknown
     private void initComponents() {
+        jTextFieldLogin = new JTextField();
+        jLabelLogomarca = new JLabel();
+        jButtonAutenticar = new JButton();
+        jButtonCancelar = new JButton();
+        jPassword = new JPasswordField();
 
-        jTextFieldLogin = new javax.swing.JTextField();
-        jLabelLogomarca = new javax.swing.JLabel();
-        jButtonAutenticar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
-        jPassword = new javax.swing.JPasswordField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Autenticação");
+        //======== this ========
+        setDefaultCloseOperation(3);
+        setTitle("Autentica\u00e7\u00e3o");
         setResizable(false);
+        Container contentPane = getContentPane();
 
-        jTextFieldLogin.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextFieldLoginFocusGained(evt);
+        //---- jTextFieldLogin ----
+        jTextFieldLogin.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                jTextFieldLoginFocusGained(e);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextFieldLoginFocusLost(evt);
+            @Override
+            public void focusLost(FocusEvent e) {
+                jTextFieldLoginFocusLost(e);
             }
         });
-        jTextFieldLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldLoginActionPerformed(evt);
-            }
-        });
+        jTextFieldLogin.addActionListener(e -> jTextFieldLoginActionPerformed(e));
 
-        jLabelLogomarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/redebras-topo.jpg"))); // NOI18N
+        //---- jLabelLogomarca ----
+        jLabelLogomarca.setIcon(new ImageIcon(getClass().getResource("/assets/redebras-topo.jpg")));
 
+        //---- jButtonAutenticar ----
         jButtonAutenticar.setText("Logar");
-        jButtonAutenticar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAutenticarActionPerformed(evt);
-            }
-        });
+        jButtonAutenticar.addActionListener(e -> jButtonAutenticarActionPerformed(e));
 
+        //---- jButtonCancelar ----
         jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
+        jButtonCancelar.addActionListener(e -> jButtonCancelarActionPerformed(e));
+
+        //---- jPassword ----
+        jPassword.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                jPasswordFocusGained(e);
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                jPasswordFocusLost(e);
+            }
+        });
+        jPassword.addActionListener(e -> jPasswordActionPerformed(e));
+        jPassword.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                jPasswordKeyPressed(e);
             }
         });
 
-        jPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPasswordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPasswordFocusLost(evt);
-            }
-        });
-        jPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordActionPerformed(evt);
-            }
-        });
-        jPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPasswordKeyPressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabelLogomarca)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(44, 44, 44)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(jButtonCancelar)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(jButtonAutenticar))
-                                                        .addComponent(jTextFieldLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                                                        .addComponent(jPassword))))
-                                .addContainerGap())
+        GroupLayout contentPaneLayout = new GroupLayout(contentPane);
+        contentPane.setLayout(contentPaneLayout);
+        contentPaneLayout.setHorizontalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addComponent(jLabelLogomarca)
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(44, 44, 44)
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(contentPaneLayout.createSequentialGroup()
+                                    .addComponent(jButtonCancelar)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonAutenticar))
+                                .addComponent(jTextFieldLogin, GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                                .addComponent(jPassword))))
+                    .addContainerGap())
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelLogomarca)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButtonAutenticar)
-                                        .addComponent(jButtonCancelar))
-                                .addContainerGap())
+        contentPaneLayout.setVerticalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabelLogomarca)
+                    .addGap(18, 18, 18)
+                    .addComponent(jTextFieldLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(jPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonAutenticar)
+                        .addComponent(jButtonCancelar))
+                    .addContainerGap())
         );
-
         pack();
+        setLocationRelativeTo(getOwner());
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLoginActionPerformed
@@ -211,10 +212,11 @@ public class JFrameLoginScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAutenticar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JLabel jLabelLogomarca;
-    private javax.swing.JPasswordField jPassword;
-    private javax.swing.JTextField jTextFieldLogin;
+    // Generated using JFormDesigner Evaluation license - unknown
+    private JTextField jTextFieldLogin;
+    private JLabel jLabelLogomarca;
+    private JButton jButtonAutenticar;
+    private JButton jButtonCancelar;
+    private JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
 }

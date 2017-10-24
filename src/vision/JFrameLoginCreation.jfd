@@ -1,0 +1,71 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p::p, par t:::p {seq {comp jButtonCancelar:::p::p, space :::x, comp jButtonCadastrar:::p::p}, seq l {comp jLabelSenhaConfir:::p::p, space u:::p, comp jPasswordFieldConfirSenha:::::x}, seq l {comp jLabelSenha:::p::p, space :::p, comp jPasswordFieldSenha:::::x}, seq l {comp jLabelLogin:::p::p, space u:::p, comp jTextFieldLogin:::::x}, seq l {comp jLabelIdFunc:::p::p, space u:::p, comp jTextFieldIdFunc:::::x}, seq l {comp jLabelNome:::p::p, space u:::p, comp jTextFieldNome:::p:298:p}}, space :::x}}"
+			"$verticalGroup": "par l {seq t {space :::x, par b {comp jLabelNome::b:p::p, comp jTextFieldNome::b:p::p}, space s:::p, par b {comp jLabelIdFunc::b:p::p, comp jTextFieldIdFunc::b:p::p}, space s:::p, par b {comp jLabelLogin::b:p::p, comp jTextFieldLogin::b:p::p}, space s:::p, par b {comp jLabelSenha::b:p::p, comp jPasswordFieldSenha::b:p::p}, space s:::p, par b {comp jLabelSenhaConfir::b:p::p, comp jPasswordFieldConfirSenha::b:p::p}, space :p:30:p, par b {comp jButtonCadastrar::b:p::p, comp jButtonCancelar::b:p::p}, space :::p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabelNome"
+				"text": "Nome:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "jTextFieldNome"
+				"editable": false
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jTextFieldNomeActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabelIdFunc"
+				"text": "Identificação do funcionário:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "jTextFieldIdFunc"
+				"editable": false
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabelLogin"
+				"text": "Login:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabelSenha"
+				"text": "Senha:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabelSenhaConfir"
+				"text": "Confirmação da senha:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "jTextFieldLogin"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jTextFieldLoginActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "jPasswordFieldSenha"
+				"text": "jPasswordField1"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "jPasswordFieldSenhaFocusGained", true ) )
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "jPasswordFieldSenhaFocusLost", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "jPasswordFieldConfirSenha"
+				"text": "jPasswordField1"
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusGained", "jPasswordFieldConfirSenhaFocusGained", true ) )
+				addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "jPasswordFieldConfirSenhaFocusLost", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jButtonCadastrar"
+				"text": "Cadastrar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonCadastrarActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jButtonCancelar"
+				"text": "Cancelar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonCancelarActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

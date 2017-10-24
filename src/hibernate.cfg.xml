@@ -4,22 +4,25 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://projetovendas.no-ip.org:3306/Vendas</property>
+        <property name="hibernate.connection.url">jdbc:mysql://projetovendas.no-ip.org:3306/Vendas?useSSL=false</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.username">Gregorio</property>
+        <property name="hibernate.connection.password">123</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <mapping class="entities.AcessoEntity"/>
-        <mapping class="entities.ClienteEntity"/>
-        <mapping class="entities.FaltasEntity"/>
-        <mapping class="entities.FuncionarioEntity"/>
-        <mapping class="entities.GastosEntity"/>
-        <mapping class="entities.ImagemProdutoEntity"/>
-        <mapping class="entities.ParcelaEntity"/>
-        <mapping class="entities.PedidoEstoqueEntity"/>
-        <mapping class="entities.ProdPedEstoqueEntity"/>
-        <mapping class="entities.ProdVendaEntity"/>
-        <mapping class="entities.ProdutoEntity"/>
-        <mapping class="entities.VendasEntity"/>
-        <!-- <property name="connection.username"/> -->
-        <!-- <property name="connection.password"/> -->
+        <property name="hbmdl.auto">create-drop</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <mapping class="entities.AccessEntity"/>
+        <mapping class="entities.ClientEntity"/>
+        <mapping class="entities.AbsencesEntity"/>
+        <mapping class="entities.FunctionaryEntity"/>
+        <mapping class="entities.SpensesEntity"/>
+        <mapping class="entities.ProductImageEntity"/>
+        <mapping class="entities.InstallmentEntity"/>
+        <mapping class="entities.ReplenishmentEntity"/>
+        <mapping class="entities.ReplenishmentItemEntity"/>
+        <mapping class="entities.SaleItemEntity"/>
+        <mapping class="entities.ProductEntity"/>
+        <mapping class="entities.SalesEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

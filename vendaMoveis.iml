@@ -21,5 +21,6 @@
     <orderEntry type="library" name="Hibernate 5.2.11-5.2.11" level="project" />
     <orderEntry type="library" name="org.thymeleaf:thymeleaf:Release" level="project" />
     <orderEntry type="library" name="org.thymeleaf:thymeleaf-spring4:Release" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.40-bin" level="project" />
   </component>
 </module>

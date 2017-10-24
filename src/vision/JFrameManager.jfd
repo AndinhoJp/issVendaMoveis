@@ -1,0 +1,143 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l {seq {comp jLabelImagemLogo:::p::p, space :::x, comp jButtonCarrinho:::p::p}, seq l {comp jPanelFundo:::p:1000:p, space :0:0:x}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :::p, par l {comp jLabelImagemLogo:::p::p, comp jButtonCarrinho:::p::p}, space s:::p, comp jPanelFundo::::594:x, space :::p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			"title": "Gerente - "
+			"resizable": false
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabelImagemLogo"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/redebras-topo-menor.jpg" )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
+				name: "jPanelFundo"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+				"maximumSize": new java.awt.Dimension( 1000, 600 )
+				"minimumSize": new java.awt.Dimension( 1000, 600 )
+				"name": ""
+				"preferredSize": new java.awt.Dimension( 1000, 600 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jButtonCarrinho"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/shopping-cart-2-icon.png" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonCarrinhoActionPerformed", true ) )
+			} )
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "jMenuPrincipal"
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "jMenuFuncionario"
+					"text": "Funcionário"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuCadastrarFuncionario"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/new20x20.png" )
+						"text": "Novo"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuCadastrarFuncionarioActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuConsultarFuncionario"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/search20x20.png" )
+						"text": "Buscar"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuConsultarFuncionarioActionPerformed", true ) )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "jMenuProduto"
+					"text": "Produto"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuCadastrarProduto"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/simpleNew20x20.png" )
+						"text": "Novo"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuCadastrarProdutoActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuConsultarProduto"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/search20x20.png" )
+						"text": "Buscar"
+						"toolTipText": ""
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuConsultarProdutoActionPerformed", true ) )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "jMenuPedido"
+					"text": "Pedidos"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuItemNovoPedido"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/simpleNew20x20.png" )
+						"text": "Novo"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuItemNovoPedidoActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuItemPedidosRep"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/search20x20.png" )
+						"text": "Buscar"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuItemPedidosRepActionPerformed", true ) )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "jMenuCliente"
+					"text": "Cliente"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuCadastrarCliente"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/new20x20.png" )
+						"text": "Novo"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuCadastrarClienteActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuConsultarCliente"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/search20x20.png" )
+						"text": "Buscar"
+						"toolTipText": ""
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuConsultarClienteActionPerformed", true ) )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "jMenuVenda"
+					"text": "Venda"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuConsultarVendaFechada"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/search20x20.png" )
+						"text": "Buscar Venda Fechada"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuConsultarVendaFechadaActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuConsultarVendaFinalizada"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/search20x20.png" )
+						"text": "Buscar Venda Finalizada"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuConsultarVendaFinalizadaActionPerformed", true ) )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "jMenuCaixa"
+					"text": "Caixa"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "jMenuConsultarCaixa"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/search20x20.png" )
+						"text": "Consultar"
+						"toolTipText": ""
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "jMenuSair"
+					"text": "Sair"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jMenuSairMouseClicked", true ) )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "jMenuMinhaConta"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/gear20x20.png" )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jMenuMinhaContaMouseClicked", true ) )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuMinhaContaActionPerformed", true ) )
+				} )
+			}
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 1100, 620 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

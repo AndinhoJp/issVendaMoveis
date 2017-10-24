@@ -5,6 +5,12 @@
  */
 package vision;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.GroupLayout;
+import javax.swing.border.*;
+
 /**
  *
  * @author ander
@@ -26,57 +32,71 @@ public class JFrameAdministrador extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // Generated using JFormDesigner Evaluation license - GregÃ³rio MagalhÃ£es
     private void initComponents() {
+        jMenuBar1 = new JMenuBar();
+        jMenu1 = new JMenu();
+        jMenu2 = new JMenu();
+        jMenuSair = new JMenu();
+        jLabelLogo = new JLabel();
 
-        jLabelLogo = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuSair = new javax.swing.JMenu();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1020, 715));
+        //======== this ========
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        Container contentPane = getContentPane();
 
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/redebras-topo-menor.jpg"))); // NOI18N
-        jLabelLogo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        //======== jMenuBar1 ========
+        {
+            jMenuBar1.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        jMenuSair.setText("Sair");
-        jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuSairMouseClicked(evt);
+            //======== jMenu1 ========
+            {
+                jMenu1.setText("File");
             }
-        });
-        jMenuBar1.add(jMenuSair);
+            jMenuBar1.add(jMenu1);
 
+            //======== jMenu2 ========
+            {
+                jMenu2.setText("Edit");
+            }
+            jMenuBar1.add(jMenu2);
+
+            //======== jMenuSair ========
+            {
+                jMenuSair.setText("Sair");
+                jMenuSair.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        jMenuSairMouseClicked(e);
+                    }
+                });
+            }
+            jMenuBar1.add(jMenuSair);
+        }
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelLogo)
-                .addContainerGap(851, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelLogo)
-                .addContainerGap(633, Short.MAX_VALUE))
-        );
+        //---- jLabelLogo ----
+        jLabelLogo.setIcon(new ImageIcon(getClass().getResource("/Imagem/redebras-topo-menor.jpg")));
+        jLabelLogo.setBorder(new EtchedBorder());
 
+        GroupLayout contentPaneLayout = new GroupLayout(contentPane);
+        contentPane.setLayout(contentPaneLayout);
+        contentPaneLayout.setHorizontalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabelLogo)
+                    .addContainerGap(851, Short.MAX_VALUE))
+        );
+        contentPaneLayout.setVerticalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabelLogo)
+                    .addContainerGap(633, Short.MAX_VALUE))
+        );
         pack();
+        setLocationRelativeTo(getOwner());
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
@@ -119,10 +139,11 @@ public class JFrameAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelLogo;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuSair;
+    // Generated using JFormDesigner Evaluation license - GregÃ³rio MagalhÃ£es
+    private JMenuBar jMenuBar1;
+    private JMenu jMenu1;
+    private JMenu jMenu2;
+    private JMenu jMenuSair;
+    private JLabel jLabelLogo;
     // End of variables declaration//GEN-END:variables
 }

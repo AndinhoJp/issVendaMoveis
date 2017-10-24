@@ -5,7 +5,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "Cliente", schema = "Vendas", catalog = "")
-public class ClienteEntity {
+public class ClientEntity {
     private String cliId;
     private String nome;
     private String sobrenome;
@@ -221,7 +221,7 @@ public class ClienteEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ClienteEntity that = (ClienteEntity) o;
+        ClientEntity that = (ClientEntity) o;
 
         if (cliId != null ? !cliId.equals(that.cliId) : that.cliId != null) return false;
         if (nome != null ? !nome.equals(that.nome) : that.nome != null) return false;
