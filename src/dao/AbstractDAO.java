@@ -68,6 +68,11 @@ public class AbstractDAO<E> {
         return currentSession().createQuery(requireNonNull(criteria)).getResultList();
     }
 
+    protected List list(Class<E> critClass) throws HibernateException {
+        currentSession().beginTransaction();
+        return currentSession().createCriteria(critClass).list();
+    }
+
     protected List<E> list(Query<E> query) throws HibernateException {
         return requireNonNull(query).list();
     }
@@ -82,7 +87,9 @@ public class AbstractDAO<E> {
     }
 
     protected E persist(E entity) throws HibernateException {
+        currentSession().beginTransaction();
         currentSession().saveOrUpdate(requireNonNull(entity));
+        currentSession().getTransaction().commit();
         return entity;
     }
 
@@ -93,4 +100,8 @@ public class AbstractDAO<E> {
         return proxy;
     }
 
+    public List listAllOrdered(String query) {
+        currentSession().beginTransaction();
+        return currentSession().createSQLQuery(query).list();
+    }
 }

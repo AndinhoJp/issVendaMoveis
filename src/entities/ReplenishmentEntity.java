@@ -5,7 +5,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "PedidoEstoque", schema = "Vendas", catalog = "")
-public class PedidoEstoqueEntity {
+public class ReplenishmentEntity {
     private String idPedEst;
     private Date dataPed;
     private Date dataAtend;
@@ -45,7 +45,7 @@ public class PedidoEstoqueEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PedidoEstoqueEntity that = (PedidoEstoqueEntity) o;
+        ReplenishmentEntity that = (ReplenishmentEntity) o;
 
         if (idPedEst != null ? !idPedEst.equals(that.idPedEst) : that.idPedEst != null) return false;
         if (dataPed != null ? !dataPed.equals(that.dataPed) : that.dataPed != null) return false;

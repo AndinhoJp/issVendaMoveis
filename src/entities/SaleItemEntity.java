@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Prod_Venda", schema = "Vendas", catalog = "")
-public class ProdVendaEntity {
+public class SaleItemEntity {
     private String prodVendaId;
     private Integer quantidade;
     private Double valorUnitario;
@@ -44,7 +44,7 @@ public class ProdVendaEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProdVendaEntity that = (ProdVendaEntity) o;
+        SaleItemEntity that = (SaleItemEntity) o;
 
         if (prodVendaId != null ? !prodVendaId.equals(that.prodVendaId) : that.prodVendaId != null) return false;
         if (quantidade != null ? !quantidade.equals(that.quantidade) : that.quantidade != null) return false;

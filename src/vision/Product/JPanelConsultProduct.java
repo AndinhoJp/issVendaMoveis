@@ -116,15 +116,10 @@ public class JPanelConsultProduct extends JPanel {
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), getBorder()));
-        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent e) {
-                if ("border".equals(e.getPropertyName())) throw new RuntimeException();
-            }
-        });
+            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
 
         //---- jLabelNomeProduto ----
@@ -150,16 +145,15 @@ public class JPanelConsultProduct extends JPanel {
 
             //---- jTableProdutos ----
             jTableProdutos.setModel(new DefaultTableModel(
-                    new Object[][]{
-                    },
-                    new String[]{
-                            "ID:", "Nome:", "Descri\u00e7\u00e3o:", "Pre\u00e7o:", "Estoque:"
-                    }
+                new Object[][] {
+                },
+                new String[] {
+                    "ID:", "Nome:", "Descri\u00e7\u00e3o:", "Pre\u00e7o:", "Estoque:"
+                }
             ) {
-                boolean[] columnEditable = new boolean[]{
-                        false, false, false, false, false
+                boolean[] columnEditable = new boolean[] {
+                    false, false, false, false, false
                 };
-
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return columnEditable[columnIndex];
@@ -185,47 +179,47 @@ public class JPanelConsultProduct extends JPanel {
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabelNomeProduto)
-                                .addGap(11, 11, 11)
-                                .addComponent(jTextFieldCampoPesquisa, GroupLayout.PREFERRED_SIZE, 440, GroupLayout.PREFERRED_SIZE)
-                                .addGap(256, 256, 256)
-                                .addComponent(jButtonPesquisar))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(596, 596, 596)
-                                .addComponent(jButtonDetalhes)
-                                .addGap(11, 11, 11)
-                                .addComponent(jButtonAdicionarAoCarrinho)
-                                .addGap(20, 20, 20)
-                                .addComponent(jButtonEditarProduto))
+            layout.createParallelGroup()
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(jLabelNomeProduto)
+                    .addGap(11, 11, 11)
+                    .addComponent(jTextFieldCampoPesquisa, GroupLayout.PREFERRED_SIZE, 440, GroupLayout.PREFERRED_SIZE)
+                    .addGap(256, 256, 256)
+                    .addComponent(jButtonPesquisar))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(596, 596, 596)
+                    .addComponent(jButtonDetalhes)
+                    .addGap(11, 11, 11)
+                    .addComponent(jButtonAdicionarAoCarrinho)
+                    .addGap(20, 20, 20)
+                    .addComponent(jButtonEditarProduto))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup()
+            layout.createParallelGroup()
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(3, 3, 3)
+                    .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addGroup(layout.createParallelGroup()
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(jLabelNomeProduto))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(2, 2, 2)
-                                                .addComponent(jTextFieldCampoPesquisa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jButtonPesquisar))
-                                .addGap(8, 8, 8)
-                                .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup()
-                                        .addComponent(jButtonAdicionarAoCarrinho)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(1, 1, 1)
-                                                .addGroup(layout.createParallelGroup()
-                                                        .addComponent(jButtonDetalhes)
-                                                        .addComponent(jButtonEditarProduto)))))
+                            .addGap(6, 6, 6)
+                            .addComponent(jLabelNomeProduto))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(jTextFieldCampoPesquisa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonPesquisar))
+                    .addGap(8, 8, 8)
+                    .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGap(12, 12, 12)
+                    .addGroup(layout.createParallelGroup()
+                        .addComponent(jButtonAdicionarAoCarrinho)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addGroup(layout.createParallelGroup()
+                                .addComponent(jButtonDetalhes)
+                                .addComponent(jButtonEditarProduto)))))
         );
 
         //======== jInternalFrameAdicionandoAoCarrinho ========
@@ -320,7 +314,7 @@ public class JPanelConsultProduct extends JPanel {
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
-                for (int i = 0; i < jInternalFrameAdicionandoAoCarrinhoContentPane.getComponentCount(); i++) {
+                for(int i = 0; i < jInternalFrameAdicionandoAoCarrinhoContentPane.getComponentCount(); i++) {
                     Rectangle bounds = jInternalFrameAdicionandoAoCarrinhoContentPane.getComponent(i).getBounds();
                     preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                     preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

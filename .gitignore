@@ -24,6 +24,3 @@
 hs_err_pid*
 
 .gitignore
-.idea/dataSources.local.xml
-.idea/inspectionProfiles/
-.idea/workspace.xml

@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 @Entity
 @Table(name = "Imagem_Produto", schema = "Vendas", catalog = "")
-public class ImagemProdutoEntity {
+public class ProductImageEntity {
     private String imagemId;
     private byte[] imagem;
 
@@ -34,7 +34,7 @@ public class ImagemProdutoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ImagemProdutoEntity that = (ImagemProdutoEntity) o;
+        ProductImageEntity that = (ProductImageEntity) o;
 
         if (imagemId != null ? !imagemId.equals(that.imagemId) : that.imagemId != null) return false;
         if (!Arrays.equals(imagem, that.imagem)) return false;

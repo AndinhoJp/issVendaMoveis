@@ -5,7 +5,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "Vendas", schema = "Vendas", catalog = "")
-public class VendasEntity {
+public class SalesEntity {
     private String vendaId;
     private Date dataCompra;
     private Double valorTotal;
@@ -78,7 +78,7 @@ public class VendasEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        VendasEntity that = (VendasEntity) o;
+        SalesEntity that = (SalesEntity) o;
 
         if (vendaId != null ? !vendaId.equals(that.vendaId) : that.vendaId != null) return false;
         if (dataCompra != null ? !dataCompra.equals(that.dataCompra) : that.dataCompra != null) return false;
