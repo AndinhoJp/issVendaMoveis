@@ -1,0 +1,68 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l {seq {comp titleLabel::::845:x, space :p:37:p, comp helpButton:::p::p}, seq {comp jScrollPane1:::p:787:p, space ::35:x, par l {comp confirmOrderButton::t:p::p, comp viewOrderButton::t:p::p, comp cancelOrderButton::t:p::p}}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :::p, par b {comp titleLabel::b:p::p, comp helpButton::b:p::p}, space s:::p, par l {seq {space :0:365:x, comp viewOrderButton:::p::p, space u:::p, comp confirmOrderButton:::p::p, space :::p, comp cancelOrderButton:::p::p, space :p:18:p}, comp jScrollPane1::::497:x}, space :::p}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "titleLabel"
+				"font": new java.awt.Font( "Arial", 1, 24 )
+				"text": "Lista de Pedidos de Reposição de Estoque"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "jScrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "ordersTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+						add( "ID" )
+						add( "Data Solit." )
+						add( "Data Atend." )
+						add( "Status" )
+					}, new java.util.Vector {
+						add( class java.lang.Object )
+						add( class java.lang.Object )
+						add( class java.lang.Object )
+						add( null )
+					}, new java.util.Vector {
+						add( true )
+						add( true )
+						add( true )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "confirmOrderButton"
+				"text": "Efetivar Pedido"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "confirmOrderButtonActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "cancelOrderButton"
+				"text": "Cancelar Pedido"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancelOrderButtonActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "viewOrderButton"
+				"text": "Consultar Pedido"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "consultOrderButtonActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "helpButton"
+				"text": "Ajuda"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "helpButtonActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 955, 560 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

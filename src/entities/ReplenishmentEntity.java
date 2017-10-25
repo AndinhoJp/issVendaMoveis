@@ -6,38 +6,49 @@ import java.sql.Date;
 @Entity
 @Table(name = "PedidoEstoque", schema = "Vendas", catalog = "")
 public class ReplenishmentEntity {
-    private String idPedEst;
-    private Date dataPed;
-    private Date dataAtend;
+    private String id;
+    private int status;
+    private Date dateCreated;
+    private Date dateAttended;
 
     @Id
     @Column(name = "IdPedEst")
-    public String getIdPedEst() {
-        return idPedEst;
+    public String getId() {
+        return id;
     }
 
-    public void setIdPedEst(String idPedEst) {
-        this.idPedEst = idPedEst;
+    public void setId(String idPedEst) {
+        this.id = idPedEst;
     }
 
     @Basic
     @Column(name = "dataPed")
-    public Date getDataPed() {
-        return dataPed;
+    public Date getDateCreated() {
+        return dateCreated;
     }
 
-    public void setDataPed(Date dataPed) {
-        this.dataPed = dataPed;
+    public void setDateCreated(Date dataPed) {
+        this.dateCreated = dataPed;
     }
 
     @Basic
     @Column(name = "dataAtend")
-    public Date getDataAtend() {
-        return dataAtend;
+    public Date getDateAttended() {
+        return dateAttended;
     }
 
-    public void setDataAtend(Date dataAtend) {
-        this.dataAtend = dataAtend;
+    public void setDateAttended(Date dataAtend) {
+        this.dateAttended = dataAtend;
+    }
+
+    @Basic
+    @Column(name = "status")
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override
@@ -47,18 +58,18 @@ public class ReplenishmentEntity {
 
         ReplenishmentEntity that = (ReplenishmentEntity) o;
 
-        if (idPedEst != null ? !idPedEst.equals(that.idPedEst) : that.idPedEst != null) return false;
-        if (dataPed != null ? !dataPed.equals(that.dataPed) : that.dataPed != null) return false;
-        if (dataAtend != null ? !dataAtend.equals(that.dataAtend) : that.dataAtend != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (dateCreated != null ? !dateCreated.equals(that.dateCreated) : that.dateCreated != null) return false;
+        if (dateAttended != null ? !dateAttended.equals(that.dateAttended) : that.dateAttended != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = idPedEst != null ? idPedEst.hashCode() : 0;
-        result = 31 * result + (dataPed != null ? dataPed.hashCode() : 0);
-        result = 31 * result + (dataAtend != null ? dataAtend.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);
+        result = 31 * result + (dateAttended != null ? dateAttended.hashCode() : 0);
         return result;
     }
 }
