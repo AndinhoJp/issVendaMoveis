@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Wed Oct 25 09:59:36 BRST 2017
  */
 
-package vision.Product;
+package vision.product;
 
 import controllers.ProductController;
 import entities.ProductEntity;

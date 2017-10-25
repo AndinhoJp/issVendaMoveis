@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Tue Oct 24 10:30:02 BRST 2017
  */
 
-package vision.Product;
+package vision.product;
 
 import controllers.ProductController;
 import entities.ProductEntity;
@@ -20,6 +20,7 @@ import javax.swing.table.*;
 public class JPanelConsultProduct extends JPanel {
     public JPanelConsultProduct() {
         initComponents();
+        initFields();
     }
 
     private ProductController productController = new ProductController();
@@ -35,7 +36,7 @@ public class JPanelConsultProduct extends JPanel {
             jFrameDetalheProduto.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    JFrame frame = (JFrame)e.getSource();
+                    JFrame frame = (JFrame) e.getSource();
                     frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                     productList = productController.listAllOrdered();
                     initFields();
@@ -61,10 +62,8 @@ public class JPanelConsultProduct extends JPanel {
 
     private void initFields() {
         DefaultTableModel model = (DefaultTableModel) resultsTable.getModel();
-        model.setNumRows(0);
-        for (ProductEntity p : productList) {
-            model.addRow(new Object[]{p.getId(), p.getName(), p.getDescription(), p.getCostPrice(), p.getStock()});
-        }
+        for (ProductEntity product : productList)
+            model.addRow(new Object[]{product.getId(), product.getName(), product.getDescription(), product.getCostPrice(), product.getStock()});
     }
 
     private void initComponents() {
@@ -168,7 +167,6 @@ public class JPanelConsultProduct extends JPanel {
                     .addContainerGap())
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-        initFields();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

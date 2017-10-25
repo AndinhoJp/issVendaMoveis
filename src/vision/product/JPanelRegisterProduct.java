@@ -2,10 +2,9 @@
  * Created by JFormDesigner on Tue Oct 24 10:20:41 BRST 2017
  */
 
-package vision.Product;
+package vision.product;
 
 import controllers.ProductController;
-import entities.ProductEntity;
 
 import java.awt.*;
 import java.awt.event.*;

@@ -5,8 +5,9 @@
 package vision;
 
 import entities.FunctionaryEntity;
-import vision.Product.JPanelConsultProduct;
-import vision.Product.JPanelRegisterProduct;
+import vision.order.JPanelViewReplenishmentOrders;
+import vision.product.JPanelConsultProduct;
+import vision.product.JPanelRegisterProduct;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -50,24 +51,26 @@ public class JFrameManager extends JFrame {
         // TODO add your code here
     }
 
-    private void jMenuCadastrarProdutoActionPerformed(ActionEvent e) {
+    private void newProductActionPerformed(ActionEvent e) {
         JPanel jPanelCadastrarProduto = new JPanelRegisterProduct();
         jPanelFundo.add(jPanelCadastrarProduto);
         card.next(jPanelFundo);
     }
 
-    private void jMenuConsultarProdutoActionPerformed(ActionEvent e) {
+    private void viewProductsActionPerformed(ActionEvent e) {
         JPanel jPanelConsultarProduto = new JPanelConsultProduct();
         jPanelFundo.add(jPanelConsultarProduto);
         card.next(jPanelFundo);
     }
 
-    private void jMenuItemNovoPedidoActionPerformed(ActionEvent e) {
+    private void newOrderActionPerformed(ActionEvent e) {
         // TODO add your code here
     }
 
-    private void jMenuItemPedidosRepActionPerformed(ActionEvent e) {
-        // TODO add your code here
+    private void viewOrdersActionPerformed(ActionEvent e) {
+        JPanelViewReplenishmentOrders jPanelViewReplenishmentOrders = new JPanelViewReplenishmentOrders();
+        jPanelFundo.add(jPanelViewReplenishmentOrders);
+        card.next(jPanelFundo);
     }
 
     private void jMenuCadastrarClienteActionPerformed(ActionEvent e) {
@@ -110,11 +113,11 @@ public class JFrameManager extends JFrame {
         jMenuCadastrarFuncionario = new JMenuItem();
         jMenuConsultarFuncionario = new JMenuItem();
         jMenuProduto = new JMenu();
-        jMenuCadastrarProduto = new JMenuItem();
-        jMenuConsultarProduto = new JMenuItem();
+        newProductItem = new JMenuItem();
+        viewProductsItem = new JMenuItem();
         jMenuPedido = new JMenu();
-        jMenuItemNovoPedido = new JMenuItem();
-        jMenuItemPedidosRep = new JMenuItem();
+        newOrderItem = new JMenuItem();
+        viewOrdersItem = new JMenuItem();
         jMenuCliente = new JMenu();
         jMenuCadastrarCliente = new JMenuItem();
         jMenuConsultarCliente = new JMenuItem();
@@ -160,18 +163,18 @@ public class JFrameManager extends JFrame {
             {
                 jMenuProduto.setText("Produto");
 
-                //---- jMenuCadastrarProduto ----
-                jMenuCadastrarProduto.setIcon(new ImageIcon(getClass().getResource("/assets/simpleNew20x20.png")));
-                jMenuCadastrarProduto.setText("Novo");
-                jMenuCadastrarProduto.addActionListener(e -> jMenuCadastrarProdutoActionPerformed(e));
-                jMenuProduto.add(jMenuCadastrarProduto);
+                //---- newProductItem ----
+                newProductItem.setIcon(new ImageIcon(getClass().getResource("/assets/simpleNew20x20.png")));
+                newProductItem.setText("Novo");
+                newProductItem.addActionListener(e -> newProductActionPerformed(e));
+                jMenuProduto.add(newProductItem);
 
-                //---- jMenuConsultarProduto ----
-                jMenuConsultarProduto.setIcon(new ImageIcon(getClass().getResource("/assets/search20x20.png")));
-                jMenuConsultarProduto.setText("Buscar");
-                jMenuConsultarProduto.setToolTipText("");
-                jMenuConsultarProduto.addActionListener(e -> jMenuConsultarProdutoActionPerformed(e));
-                jMenuProduto.add(jMenuConsultarProduto);
+                //---- viewProductsItem ----
+                viewProductsItem.setIcon(new ImageIcon(getClass().getResource("/assets/search20x20.png")));
+                viewProductsItem.setText("Buscar");
+                viewProductsItem.setToolTipText("");
+                viewProductsItem.addActionListener(e -> viewProductsActionPerformed(e));
+                jMenuProduto.add(viewProductsItem);
             }
             jMenuPrincipal.add(jMenuProduto);
 
@@ -179,17 +182,17 @@ public class JFrameManager extends JFrame {
             {
                 jMenuPedido.setText("Pedidos");
 
-                //---- jMenuItemNovoPedido ----
-                jMenuItemNovoPedido.setIcon(new ImageIcon(getClass().getResource("/assets/simpleNew20x20.png")));
-                jMenuItemNovoPedido.setText("Novo");
-                jMenuItemNovoPedido.addActionListener(e -> jMenuItemNovoPedidoActionPerformed(e));
-                jMenuPedido.add(jMenuItemNovoPedido);
+                //---- newOrderItem ----
+                newOrderItem.setIcon(new ImageIcon(getClass().getResource("/assets/simpleNew20x20.png")));
+                newOrderItem.setText("Novo");
+                newOrderItem.addActionListener(e -> newOrderActionPerformed(e));
+                jMenuPedido.add(newOrderItem);
 
-                //---- jMenuItemPedidosRep ----
-                jMenuItemPedidosRep.setIcon(new ImageIcon(getClass().getResource("/assets/search20x20.png")));
-                jMenuItemPedidosRep.setText("Buscar");
-                jMenuItemPedidosRep.addActionListener(e -> jMenuItemPedidosRepActionPerformed(e));
-                jMenuPedido.add(jMenuItemPedidosRep);
+                //---- viewOrdersItem ----
+                viewOrdersItem.setIcon(new ImageIcon(getClass().getResource("/assets/search20x20.png")));
+                viewOrdersItem.setText("Buscar");
+                viewOrdersItem.addActionListener(e -> viewOrdersActionPerformed(e));
+                jMenuPedido.add(viewOrdersItem);
             }
             jMenuPrincipal.add(jMenuPedido);
 
@@ -334,11 +337,11 @@ public class JFrameManager extends JFrame {
     private JMenuItem jMenuCadastrarFuncionario;
     private JMenuItem jMenuConsultarFuncionario;
     private JMenu jMenuProduto;
-    private JMenuItem jMenuCadastrarProduto;
-    private JMenuItem jMenuConsultarProduto;
+    private JMenuItem newProductItem;
+    private JMenuItem viewProductsItem;
     private JMenu jMenuPedido;
-    private JMenuItem jMenuItemNovoPedido;
-    private JMenuItem jMenuItemPedidosRep;
+    private JMenuItem newOrderItem;
+    private JMenuItem viewOrdersItem;
     private JMenu jMenuCliente;
     private JMenuItem jMenuCadastrarCliente;
     private JMenuItem jMenuConsultarCliente;

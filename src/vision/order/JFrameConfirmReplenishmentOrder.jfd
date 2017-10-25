@@ -1,0 +1,46 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space ::9:x, comp jScrollPane1:::p::p, space s:::p, par l {comp modifyButton:::p::p, par t {comp quantityField::t:p:137:p, comp cancelButton:::p::p, comp applyButton:::p::p}, comp quantityLabel::l:p::p}, space :p:27:p}}"
+			"$verticalGroup": "par l {seq l {space :p:24:p, comp quantityLabel:::p::p, space :::p, comp quantityField:::p::p, space :::p, comp modifyButton:::p::p, space ::156:x, comp applyButton:::p::p, space :::p, comp cancelButton:::p::p, space :p:19:p}, seq l {space :::p, comp jScrollPane1::::341:x, space :::p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "jScrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "productsTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector, new java.util.Vector, new java.util.Vector, new java.util.Vector )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "quantityField"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "modifyButton"
+				"text": "Modificar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "applyButton"
+				"text": "Aplicar Alterações"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton2ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "cancelButton"
+				"text": "Cancelar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton3ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "quantityLabel"
+				"text": "Quantidade:"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 645, 385 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

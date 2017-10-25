@@ -51,33 +51,33 @@ new FormModel {
 					name: "jMenuProduto"
 					"text": "Produto"
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
-						name: "jMenuCadastrarProduto"
+						name: "newProductItem"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/simpleNew20x20.png" )
 						"text": "Novo"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuCadastrarProdutoActionPerformed", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "newProductActionPerformed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
-						name: "jMenuConsultarProduto"
+						name: "viewProductsItem"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/search20x20.png" )
 						"text": "Buscar"
 						"toolTipText": ""
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuConsultarProdutoActionPerformed", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "viewProductsActionPerformed", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 					name: "jMenuPedido"
 					"text": "Pedidos"
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
-						name: "jMenuItemNovoPedido"
+						name: "newOrderItem"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/simpleNew20x20.png" )
 						"text": "Novo"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuItemNovoPedidoActionPerformed", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "newOrderActionPerformed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
-						name: "jMenuItemPedidosRep"
+						name: "viewOrdersItem"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/assets/search20x20.png" )
 						"text": "Buscar"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jMenuItemPedidosRepActionPerformed", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "viewOrdersActionPerformed", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {

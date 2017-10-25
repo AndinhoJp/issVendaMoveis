@@ -5,49 +5,49 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ProdPedEstoque", schema = "Vendas", catalog = "")
 public class ReplenishmentItemEntity {
-    private Integer quantidade;
-    private Integer quantidadePedAtend;
-    private Integer stat;
-    private String idProdPedEsotque;
+    private Integer quantity;
+    private Integer quantitySettled;
+    private Integer status;
+    private String orderId;
 
     @Basic
     @Column(name = "quantidade")
-    public Integer getQuantidade() {
-        return quantidade;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantity(Integer quantidade) {
+        this.quantity = quantidade;
     }
 
     @Basic
     @Column(name = "quantidadePedAtend")
-    public Integer getQuantidadePedAtend() {
-        return quantidadePedAtend;
+    public Integer getQuantitySettled() {
+        return quantitySettled;
     }
 
-    public void setQuantidadePedAtend(Integer quantidadePedAtend) {
-        this.quantidadePedAtend = quantidadePedAtend;
+    public void setQuantitySettled(Integer quantidadePedAtend) {
+        this.quantitySettled = quantidadePedAtend;
     }
 
     @Basic
     @Column(name = "stat")
-    public Integer getStat() {
-        return stat;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setStat(Integer stat) {
-        this.stat = stat;
+    public void setStatus(Integer stat) {
+        this.status = stat;
     }
 
     @Id
     @Column(name = "IdProdPedEsotque")
-    public String getIdProdPedEsotque() {
-        return idProdPedEsotque;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setIdProdPedEsotque(String idProdPedEsotque) {
-        this.idProdPedEsotque = idProdPedEsotque;
+    public void setOrderId(String idProdPedEsotque) {
+        this.orderId = idProdPedEsotque;
     }
 
     @Override
@@ -57,11 +57,11 @@ public class ReplenishmentItemEntity {
 
         ReplenishmentItemEntity that = (ReplenishmentItemEntity) o;
 
-        if (quantidade != null ? !quantidade.equals(that.quantidade) : that.quantidade != null) return false;
-        if (quantidadePedAtend != null ? !quantidadePedAtend.equals(that.quantidadePedAtend) : that.quantidadePedAtend != null)
+        if (quantity != null ? !quantity.equals(that.quantity) : that.quantity != null) return false;
+        if (quantitySettled != null ? !quantitySettled.equals(that.quantitySettled) : that.quantitySettled != null)
             return false;
-        if (stat != null ? !stat.equals(that.stat) : that.stat != null) return false;
-        if (idProdPedEsotque != null ? !idProdPedEsotque.equals(that.idProdPedEsotque) : that.idProdPedEsotque != null)
+        if (status != null ? !status.equals(that.status) : that.status != null) return false;
+        if (orderId != null ? !orderId.equals(that.orderId) : that.orderId != null)
             return false;
 
         return true;
@@ -69,10 +69,10 @@ public class ReplenishmentItemEntity {
 
     @Override
     public int hashCode() {
-        int result = quantidade != null ? quantidade.hashCode() : 0;
-        result = 31 * result + (quantidadePedAtend != null ? quantidadePedAtend.hashCode() : 0);
-        result = 31 * result + (stat != null ? stat.hashCode() : 0);
-        result = 31 * result + (idProdPedEsotque != null ? idProdPedEsotque.hashCode() : 0);
+        int result = quantity != null ? quantity.hashCode() : 0;
+        result = 31 * result + (quantitySettled != null ? quantitySettled.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (orderId != null ? orderId.hashCode() : 0);
         return result;
     }
 }
