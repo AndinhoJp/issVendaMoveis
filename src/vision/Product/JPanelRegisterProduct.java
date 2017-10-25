@@ -25,21 +25,34 @@ public class JPanelRegisterProduct extends JPanel {
 
     public JPanelRegisterProduct() {
         initComponents();
+        idField.setText(id);
     }
 
-    private void jButtonSalvarActionPerformed(ActionEvent e) {
+    private void clearBoxes() {
+        idField.setText((id = String.valueOf(new Random().nextInt(99999999))));
+        nameField.setText("");
+        brandField.setText("");
+        heightField.setText("");
+        widthField.setText("");
+        depthField.setText("");
+        stockField.setText("");
+        costPriceField.setText("");
+        salePriceField.setText("");
+        descriptionField.setText("");
+    }
 
+    private void saveButtonActionPerformed(ActionEvent e) {
         String emptyMessage = productController.setProductValues(
                 id,
-                jTextFieldNomeProduto.getText(),
-                jTextFieldQuantidade.getText(),
-                jTextFieldMarcaProduto.getText(),
-                JTextAltura4.getText(),
-                JTextLargura4.getText(),
-                JTextProfundidade4.getText(),
-                jTextFieldPrecoCompra.getText(),
-                jTextFieldPrecoVenda.getText(),
-                jTextAreaDescrição.getText());
+                nameField.getText(),
+                stockField.getText(),
+                descriptionField.getText(),
+                salePriceField.getText(),
+                costPriceField.getText(),
+                heightField.getText(),
+                widthField.getText(),
+                depthField.getText(),
+                brandField.getText());
 
         if (emptyMessage != null) {
             JOptionPane.showMessageDialog(null, "O campo" + emptyMessage + "não pode ficar vazio.");
@@ -55,57 +68,36 @@ public class JPanelRegisterProduct extends JPanel {
         }
     }
 
-    private void clearBoxes() {
-        jTextFieldNomeProduto.setText("");
-        jTextFieldQuantidade.setText("");
-        jTextAreaDescrição.setText("");
-        jTextFieldPrecoCompra.setText("");
-        jTextFieldPrecoVenda.setText("");
-        JTextLargura4.setText("");
-        JTextProfundidade4.setText("");
-        JTextAltura4.setText("");
-        jTextFieldMarcaProduto.setText("");
-        jTextFieldIDProduto.setText((id = String.valueOf(new Random().nextInt(99999999))));
-    }
-
-    private void jButtonSelecionarFotoActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void JLabelFotoProdutoMouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - GregÃ³rio MagalhÃ£es
-        JPanelDimensao = new JPanel();
-        JLabeLargura4 = new JLabel();
-        JTextLargura4 = new JTextField();
-        JLabeAltura4 = new JLabel();
-        JTextAltura4 = new JTextField();
-        JTextProfundidade4 = new JTextField();
-        JLabeProfundidade4 = new JLabel();
-        jButtonAvançarFoto = new JButton();
-        jLabelDescricao = new JLabel();
-        jTextFieldQuantidade = new JTextField();
-        jLabelQuantidade = new JLabel();
-        jLabelNumeroID = new JLabel();
-        jLabelPrecoCompra = new JLabel();
-        jLabelMarca = new JLabel();
-        jTextFieldPrecoCompra = new JTextField();
-        jTextFieldNomeProduto = new JTextField();
-        jLabelNome = new JLabel();
-        jButtonSelecionarFoto = new JButton();
-        jTextFieldMarcaProduto = new JTextField();
-        jTextFieldIDProduto = new JTextField();
-        jButtonRetrocederFoto = new JButton();
+        descriptionLabel = new JLabel();
         jScrollPane1 = new JScrollPane();
-        jTextAreaDescrição = new JTextArea();
-        jLabelPrecoVenda = new JLabel();
-        jTextFieldPrecoVenda = new JTextField();
+        descriptionField = new JTextArea();
+        panel1 = new JPanel();
+        nameLabel = new JLabel();
+        nameField = new JTextField();
+        costPriceLabel = new JLabel();
+        costPriceField = new JTextField();
+        salePriceLabel = new JLabel();
+        salePriceField = new JTextField();
+        dimensionsPanel = new JPanel();
+        widthLabel = new JLabel();
+        widthField = new JTextField();
+        heightLabel = new JLabel();
+        heightField = new JTextField();
+        depthField = new JTextField();
+        depthLabel = new JLabel();
+        brandField = new JTextField();
+        labelBrand = new JLabel();
+        stockField = new JTextField();
+        stockLabel = new JLabel();
+        idField = new JTextField();
+        idLabel = new JLabel();
         JLabelFotoProduto = new JLabel();
-        jButtonSalvar = new JButton();
+        jButtonAntFoto = new JButton();
+        jButtonProxFoto = new JButton();
+        saveButton = new JButton();
 
         //======== this ========
         setMaximumSize(new Dimension(995, 595));
@@ -120,263 +112,268 @@ public class JPanelRegisterProduct extends JPanel {
                 java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
 
-        //======== JPanelDimensao ========
-        {
-            JPanelDimensao.setBorder(new TitledBorder("Dimens\u00e3o do Produto:"));
-
-            //---- JLabeLargura4 ----
-            JLabeLargura4.setFont(new Font("Times New Roman", Font.BOLD, 14));
-            JLabeLargura4.setText("Largura:");
-
-            //---- JLabeAltura4 ----
-            JLabeAltura4.setFont(new Font("Times New Roman", Font.BOLD, 14));
-            JLabeAltura4.setText("Altura:");
-
-            //---- JLabeProfundidade4 ----
-            JLabeProfundidade4.setFont(new Font("Times New Roman", Font.BOLD, 14));
-            JLabeProfundidade4.setText("Profundidade:");
-
-            GroupLayout JPanelDimensaoLayout = new GroupLayout(JPanelDimensao);
-            JPanelDimensao.setLayout(JPanelDimensaoLayout);
-            JPanelDimensaoLayout.setHorizontalGroup(
-                JPanelDimensaoLayout.createParallelGroup()
-                    .addGroup(JPanelDimensaoLayout.createSequentialGroup()
-                        .addComponent(JLabeLargura4)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTextLargura4, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JLabeAltura4)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTextAltura4, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JLabeProfundidade4)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTextProfundidade4, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 17, Short.MAX_VALUE))
-            );
-            JPanelDimensaoLayout.setVerticalGroup(
-                JPanelDimensaoLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, JPanelDimensaoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(JPanelDimensaoLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(JLabeLargura4)
-                            .addComponent(JTextLargura4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLabeAltura4)
-                            .addComponent(JTextAltura4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTextProfundidade4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JLabeProfundidade4)))
-            );
-        }
-
-        //---- jButtonAvançarFoto ----
-        jButtonAvançarFoto.setFont(new Font("Arial", Font.PLAIN, 11));
-        jButtonAvançarFoto.setText("Avan\u00e7ar");
-
-        //---- jLabelDescricao ----
-        jLabelDescricao.setFont(new Font("Arial", Font.BOLD, 14));
-        jLabelDescricao.setText("Descri\u00e7\u00e3o do produto:");
-
-        //---- jTextFieldQuantidade ----
-        jTextFieldQuantidade.setFont(new Font("Arial", Font.PLAIN, 14));
-
-        //---- jLabelQuantidade ----
-        jLabelQuantidade.setFont(new Font("Arial", Font.BOLD, 14));
-        jLabelQuantidade.setText("Quantidade:");
-
-        //---- jLabelNumeroID ----
-        jLabelNumeroID.setFont(new Font("Arial", Font.BOLD, 14));
-        jLabelNumeroID.setText("ID:");
-
-        //---- jLabelPrecoCompra ----
-        jLabelPrecoCompra.setFont(new Font("Arial", Font.BOLD, 14));
-        jLabelPrecoCompra.setText("Pre\u00e7o de compra:");
-
-        //---- jLabelMarca ----
-        jLabelMarca.setFont(new Font("Arial", Font.BOLD, 14));
-        jLabelMarca.setText("Marca:");
-        jLabelMarca.setLabelFor(jTextFieldMarcaProduto);
-
-        //---- jTextFieldPrecoCompra ----
-        jTextFieldPrecoCompra.setFont(new Font("Arial", Font.PLAIN, 14));
-
-        //---- jTextFieldNomeProduto ----
-        jTextFieldNomeProduto.setFont(new Font("Arial", Font.PLAIN, 14));
-
-        //---- jLabelNome ----
-        jLabelNome.setFont(new Font("Arial", Font.BOLD, 14));
-        jLabelNome.setText("Nome:");
-
-        //---- jButtonSelecionarFoto ----
-        jButtonSelecionarFoto.setText("Selecionar Foto");
-        jButtonSelecionarFoto.addActionListener(e -> jButtonSelecionarFotoActionPerformed(e));
-
-        //---- jTextFieldMarcaProduto ----
-        jTextFieldMarcaProduto.setFont(new Font("Arial", Font.PLAIN, 14));
-
-        //---- jTextFieldIDProduto ----
-        jTextFieldIDProduto.setFont(new Font("Arial", Font.PLAIN, 12));
-
-        //---- jButtonRetrocederFoto ----
-        jButtonRetrocederFoto.setText("Retroceder");
+        //---- descriptionLabel ----
+        descriptionLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        descriptionLabel.setText("Descri\u00e7\u00e3o do produto:");
 
         //======== jScrollPane1 ========
         {
 
-            //---- jTextAreaDescrição ----
-            jTextAreaDescrição.setColumns(20);
-            jTextAreaDescrição.setRows(5);
-            jScrollPane1.setViewportView(jTextAreaDescrição);
+            //---- descriptionField ----
+            descriptionField.setColumns(20);
+            descriptionField.setRows(5);
+            jScrollPane1.setViewportView(descriptionField);
         }
 
-        //---- jLabelPrecoVenda ----
-        jLabelPrecoVenda.setFont(new Font("Arial", Font.BOLD, 14));
-        jLabelPrecoVenda.setText("Pre\u00e7o de venda:");
-        jLabelPrecoVenda.setLabelFor(jTextFieldPrecoVenda);
+        //======== panel1 ========
+        {
+            panel1.setBorder(new TitledBorder("Informa\u00e7\u00f5es"));
 
-        //---- jTextFieldPrecoVenda ----
-        jTextFieldPrecoVenda.setFont(new Font("Arial", Font.PLAIN, 14));
+            //---- nameLabel ----
+            nameLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+            nameLabel.setText("Nome do Produto:");
+            nameLabel.setLabelFor(nameField);
+
+            //---- costPriceLabel ----
+            costPriceLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+            costPriceLabel.setText("Pre\u00e7o de custo:");
+            costPriceLabel.setLabelFor(costPriceField);
+
+            //---- salePriceLabel ----
+            salePriceLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+            salePriceLabel.setText("Pre\u00e7o de venda:");
+            salePriceLabel.setLabelFor(salePriceField);
+
+            //======== dimensionsPanel ========
+            {
+                dimensionsPanel.setBorder(new TitledBorder("Dimens\u00f5es"));
+
+                //---- widthLabel ----
+                widthLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+                widthLabel.setText("Largura:");
+                widthLabel.setLabelFor(widthField);
+
+                //---- heightLabel ----
+                heightLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+                heightLabel.setText("Altura:");
+                heightLabel.setLabelFor(heightField);
+
+                //---- depthLabel ----
+                depthLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+                depthLabel.setText("Profundidade:");
+                depthLabel.setLabelFor(depthField);
+
+                GroupLayout dimensionsPanelLayout = new GroupLayout(dimensionsPanel);
+                dimensionsPanel.setLayout(dimensionsPanelLayout);
+                dimensionsPanelLayout.setHorizontalGroup(
+                    dimensionsPanelLayout.createParallelGroup()
+                        .addGroup(dimensionsPanelLayout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addComponent(widthLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(widthField, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(heightLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(heightField, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(depthLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(depthField, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                );
+                dimensionsPanelLayout.setVerticalGroup(
+                    dimensionsPanelLayout.createParallelGroup()
+                        .addGroup(dimensionsPanelLayout.createSequentialGroup()
+                            .addGroup(dimensionsPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(widthLabel)
+                                .addComponent(widthField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(heightLabel)
+                                .addComponent(heightField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(depthField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(depthLabel))
+                            .addGap(0, 10, Short.MAX_VALUE))
+                );
+            }
+
+            //---- labelBrand ----
+            labelBrand.setFont(new Font("Times New Roman", Font.BOLD, 14));
+            labelBrand.setText("Marca:");
+            labelBrand.setLabelFor(brandField);
+
+            //---- stockLabel ----
+            stockLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+            stockLabel.setText("Quantidade:");
+            stockLabel.setLabelFor(stockField);
+
+            //---- idLabel ----
+            idLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+            idLabel.setText("ID do Produto:");
+            idLabel.setLabelFor(idField);
+
+            GroupLayout panel1Layout = new GroupLayout(panel1);
+            panel1.setLayout(panel1Layout);
+            panel1Layout.setHorizontalGroup(
+                panel1Layout.createParallelGroup()
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addComponent(salePriceField, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                .addComponent(dimensionsPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panel1Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(panel1Layout.createParallelGroup()
+                                        .addGroup(panel1Layout.createSequentialGroup()
+                                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                .addComponent(nameLabel)
+                                                .addComponent(costPriceLabel))
+                                            .addGroup(panel1Layout.createParallelGroup()
+                                                .addGroup(panel1Layout.createSequentialGroup()
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(nameField, GroupLayout.PREFERRED_SIZE, 534, GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(panel1Layout.createSequentialGroup()
+                                                    .addGap(6, 6, 6)
+                                                    .addGroup(panel1Layout.createParallelGroup()
+                                                        .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                                                            .addComponent(idField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(stockLabel)
+                                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(stockField, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(panel1Layout.createSequentialGroup()
+                                                            .addComponent(costPriceField, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(salePriceLabel)))
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(labelBrand)
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(brandField, GroupLayout.PREFERRED_SIZE, 213, GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                                            .addComponent(idLabel)
+                                            .addGap(538, 538, 538))))))
+                        .addContainerGap(10, Short.MAX_VALUE))
+            );
+            panel1Layout.setVerticalGroup(
+                panel1Layout.createParallelGroup()
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameLabel)
+                            .addComponent(nameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(costPriceLabel)
+                            .addComponent(costPriceField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(salePriceLabel)
+                            .addComponent(salePriceField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(idLabel)
+                            .addComponent(idField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stockLabel)
+                            .addComponent(stockField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelBrand)
+                            .addComponent(brandField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dimensionsPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+            );
+        }
 
         //---- JLabelFotoProduto ----
         JLabelFotoProduto.setHorizontalAlignment(SwingConstants.CENTER);
         JLabelFotoProduto.setText("Inserir Foto");
         JLabelFotoProduto.setBorder(new TitledBorder("Imagem X-1/X"));
-        JLabelFotoProduto.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JLabelFotoProdutoMouseClicked(e);
-            }
-        });
+        JLabelFotoProduto.setMaximumSize(new Dimension(210, 176));
+        JLabelFotoProduto.setMinimumSize(new Dimension(210, 176));
+        JLabelFotoProduto.setPreferredSize(new Dimension(210, 176));
 
-        //---- jButtonSalvar ----
-        jButtonSalvar.setText("Salvar");
-        jButtonSalvar.addActionListener(e -> jButtonSalvarActionPerformed(e));
+        //---- jButtonAntFoto ----
+        jButtonAntFoto.setText("Anterior");
+
+        //---- jButtonProxFoto ----
+        jButtonProxFoto.setText("Pr\u00f3ximo");
+
+        //---- saveButton ----
+        saveButton.setText("Salvar");
+        saveButton.addActionListener(e -> saveButtonActionPerformed(e));
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButtonSalvar)
+                    .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 926, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jButtonRetrocederFoto)
-                                .addGap(33, 33, 33)
-                                .addComponent(jButtonAvançarFoto)
-                                .addGap(34, 34, 34)
-                                .addComponent(jButtonSelecionarFoto))
-                            .addComponent(jLabelDescricao, GroupLayout.Alignment.LEADING)
-                            .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(JLabelFotoProduto, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup()
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelNumeroID)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldIDProduto, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabelNome)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldNomeProduto, GroupLayout.PREFERRED_SIZE, 525, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup()
-                                            .addComponent(jLabelPrecoVenda)
-                                            .addComponent(jLabelMarca, GroupLayout.Alignment.TRAILING))
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextFieldPrecoVenda)
-                                            .addComponent(jTextFieldMarcaProduto, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabelPrecoCompra)
-                                            .addComponent(jLabelQuantidade))
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextFieldQuantidade, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldPrecoCompra, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)))
-                                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(JPanelDimensao, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(62, 62, 62))))))
-                    .addContainerGap(22, Short.MAX_VALUE))
+                            .addComponent(saveButton)
+                            .addGroup(layout.createParallelGroup()
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(38, 38, 38)
+                                    .addComponent(jButtonAntFoto)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButtonProxFoto))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(layout.createParallelGroup()
+                                        .addComponent(descriptionLabel)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(JLabelFotoProduto, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 892, GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(JLabelFotoProduto, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(23, 23, 23)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabelNumeroID)
-                                .addComponent(jTextFieldIDProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelNome)
-                                .addComponent(jTextFieldNomeProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelQuantidade)
-                                    .addComponent(jTextFieldQuantidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelMarca)
-                                    .addComponent(jTextFieldMarcaProduto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabelPrecoVenda)
-                                .addComponent(jLabelPrecoCompra)
-                                .addComponent(jTextFieldPrecoVenda, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldPrecoCompra, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addComponent(JPanelDimensao, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JLabelFotoProduto, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(jButtonRetrocederFoto)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAvançarFoto)
-                            .addComponent(jButtonSelecionarFoto)))
-                    .addGap(18, 18, 18)
-                    .addComponent(jLabelDescricao)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonProxFoto)
+                        .addComponent(jButtonAntFoto))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descriptionLabel)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButtonSalvar)
-                    .addContainerGap(11, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(saveButton)
+                    .addContainerGap())
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - GregÃ³rio MagalhÃ£es
-    private JPanel JPanelDimensao;
-    private JLabel JLabeLargura4;
-    private JTextField JTextLargura4;
-    private JLabel JLabeAltura4;
-    private JTextField JTextAltura4;
-    private JTextField JTextProfundidade4;
-    private JLabel JLabeProfundidade4;
-    private JButton jButtonAvançarFoto;
-    private JLabel jLabelDescricao;
-    private JTextField jTextFieldQuantidade;
-    private JLabel jLabelQuantidade;
-    private JLabel jLabelNumeroID;
-    private JLabel jLabelPrecoCompra;
-    private JLabel jLabelMarca;
-    private JTextField jTextFieldPrecoCompra;
-    private JTextField jTextFieldNomeProduto;
-    private JLabel jLabelNome;
-    private JButton jButtonSelecionarFoto;
-    private JTextField jTextFieldMarcaProduto;
-    private JTextField jTextFieldIDProduto;
-    private JButton jButtonRetrocederFoto;
+    private JLabel descriptionLabel;
     private JScrollPane jScrollPane1;
-    private JTextArea jTextAreaDescrição;
-    private JLabel jLabelPrecoVenda;
-    private JTextField jTextFieldPrecoVenda;
+    private JTextArea descriptionField;
+    private JPanel panel1;
+    private JLabel nameLabel;
+    private JTextField nameField;
+    private JLabel costPriceLabel;
+    private JTextField costPriceField;
+    private JLabel salePriceLabel;
+    private JTextField salePriceField;
+    private JPanel dimensionsPanel;
+    private JLabel widthLabel;
+    private JTextField widthField;
+    private JLabel heightLabel;
+    private JTextField heightField;
+    private JTextField depthField;
+    private JLabel depthLabel;
+    private JTextField brandField;
+    private JLabel labelBrand;
+    private JTextField stockField;
+    private JLabel stockLabel;
+    private JTextField idField;
+    private JLabel idLabel;
     private JLabel JLabelFotoProduto;
-    private JButton jButtonSalvar;
+    private JButton jButtonAntFoto;
+    private JButton jButtonProxFoto;
+    private JButton saveButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

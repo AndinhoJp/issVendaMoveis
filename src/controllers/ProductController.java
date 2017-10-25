@@ -13,17 +13,17 @@ public class ProductController {
 
     public String checkValid() {
 
-        if (productEntity.getQuantidadeEstoque() < 0)
+        if (productEntity.getStock() < 0)
             return "Quantidade";
-        if (productEntity.getPrecoVenda() < 0f)
+        if (productEntity.getCostPrice() < 0f)
             return "Preço de Venda";
-        if (productEntity.getPrecoCusto() < 0f)
+        if (productEntity.getSalePrice() < 0f)
             return "Preço de Compra";
-        if (productEntity.getLargura() < 0f)
+        if (productEntity.getWidth() < 0f)
             return "Largura";
-        if (productEntity.getProfundidade() < 0f)
+        if (productEntity.getDepth() < 0f)
             return "Profundidade";
-        if (productEntity.getAltura() < 0f)
+        if (productEntity.getHeight() < 0f)
             return "Altura";
         return null;
 
@@ -51,16 +51,16 @@ public class ProductController {
             return "Marca";
         }
 
-        productEntity.setProdId(id);
-        productEntity.setNomeProd(productName);
-        productEntity.setQuantidadeEstoque(Integer.parseInt(quantity));
-        productEntity.setDescricao(description);
-        productEntity.setPrecoVenda(Double.parseDouble(salePrice));
-        productEntity.setPrecoCusto(Double.parseDouble(costPrice));
-        productEntity.setAltura(Double.parseDouble(height));
-        productEntity.setLargura(Double.parseDouble(width));
-        productEntity.setProfundidade(Double.parseDouble(depth));
-        productEntity.setMarca(brand);
+        productEntity.setId(id);
+        productEntity.setName(productName);
+        productEntity.setStock(Integer.parseInt(quantity));
+        productEntity.setDescription(description);
+        productEntity.setCostPrice(Double.parseDouble(salePrice));
+        productEntity.setSalePrice(Double.parseDouble(costPrice));
+        productEntity.setHeight(Double.parseDouble(height));
+        productEntity.setWidth(Double.parseDouble(width));
+        productEntity.setDepth(Double.parseDouble(depth));
+        productEntity.setBrand(brand);
 
         return null;
     }
@@ -73,7 +73,11 @@ public class ProductController {
         return productDAO.listAll();
     }
 
-    public List<ProductEntity> listAllOrdered() {
+    public String update() {
+        return productDAO.update(productEntity);
+    }
+
+    public List listAllOrdered() {
         return productDAO.listAllOrdered();
     }
 }

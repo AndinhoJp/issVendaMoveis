@@ -1,0 +1,159 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :22:22:p, par l {comp descriptionLabel:::p::p, seq l {par l {seq {space :p:36:p, comp prevPhotoButton:::p::p, space u:::p, comp nextPhotoButton:::p::p}, comp photoField:::p:235:p}, space :::p, comp panel1:::p::p}, comp jScrollPane1::l:p:917:p, seq t {comp editButton:::p::p, space :::p, comp closeButton:::p::p}}, space ::19:x}}"
+			"$verticalGroup": "par l {seq {space ::17:x, par l {seq {comp photoField:::p:176:p, space :0:1:x}, comp panel1:::::x}, space :::p, par b {comp nextPhotoButton::b:p::p, comp prevPhotoButton::b:p::p}, space :::p, comp descriptionLabel:::p::p, space :::p, comp jScrollPane1:::p:186:p, space :::p, par b {comp closeButton::b:p:25:p, comp editButton::b:p:25:p}, space :p:5:p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 2
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "jScrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "descriptionField"
+					"editable": false
+					"columns": 20
+					"rows": 5
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "descriptionLabel"
+				"font": new java.awt.Font( "Times New Roman", 1, 14 )
+				"text": "Descrição do Produto:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "photoField"
+				"horizontalAlignment": 0
+				"text": "Inserir Foto"
+				"border": new javax.swing.border.TitledBorder( "Imagem X-1/X" )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "closeButton"
+				"text": "Fechar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "closeButtonActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "nextPhotoButton"
+				"text": "Próximo"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "prevPhotoButton"
+				"text": "Anterior"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "editButton"
+				"text": "Editar"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "editButtonActionPerformed", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {par t:::p {comp dimensionsPanel::l:::x, seq l {space :::p, par t:::p {comp costPriceLabel:::p::p, comp idLabel:::p::p, comp nameLabel:::p::p}, space :::p, par l {comp nameField:::p:534:p, seq {par t:::p {comp costPriceField:::::x, seq l {comp idField:::p:115:p, space :::p, comp stockLabel:::p::p}}, space :::p, par l {seq {comp stockField:::p:60:p, space u:::p, comp labelBrand:::p::p, space :::p, comp brandField:::::x}, seq {comp salePriceLabel:::p::p, space :::p, comp salePriceField:::::x}}}}}}, space ::10:x}}"
+				"$verticalGroup": "par l {seq l {par b {comp nameLabel::b:p::p, comp nameField::b:p::p}, space :::p, par b {comp labelBrand::b:p::p, comp brandField::b:p::p, comp stockField::b:p::p, comp stockLabel::b:p::p, comp idLabel::b:p::p, comp idField::b:p::p}, space :::p, par b {comp costPriceLabel::b:p::p, comp costPriceField::b:p::p, comp salePriceLabel::b:p::p, comp salePriceField::b:p::p}, space ::7:x, comp dimensionsPanel:::p::p, space :::p}}"
+			} ) {
+				name: "panel1"
+				"border": new javax.swing.border.TitledBorder( "Informações" )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "nameLabel"
+					"font": new java.awt.Font( "Times New Roman", 1, 14 )
+					"text": "Nome do Produto:"
+					"labelFor": new FormReference( "nameField" )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "nameField"
+					"editable": false
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "stockLabel"
+					"font": new java.awt.Font( "Times New Roman", 1, 14 )
+					"text": "Quantidade:"
+					"labelFor": new FormReference( "stockField" )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "stockField"
+					"editable": false
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelBrand"
+					"font": new java.awt.Font( "Times New Roman", 1, 14 )
+					"text": "Marca:"
+					"labelFor": new FormReference( "brandField" )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "brandField"
+					"editable": false
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "costPriceLabel"
+					"font": &Font0 new java.awt.Font( "Times New Roman", 1, 14 )
+					"text": "Preço de custo:"
+					"labelFor": new FormReference( "costPriceField" )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "costPriceField"
+					"editable": false
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "salePriceLabel"
+					"font": #Font0
+					"text": "Preço de venda:"
+					"labelFor": new FormReference( "salePriceField" )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "salePriceField"
+					"editable": false
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "idLabel"
+					"font": new java.awt.Font( "Times New Roman", 1, 14 )
+					"text": "ID do Produto:"
+					"labelFor": new FormReference( "idField" )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "idField"
+					"editable": false
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:39:p, comp widthLabel:::p::p, space :::p, comp widthField:::p:102:p, space u:::p, comp heightLabel:::p::p, space :::p, comp heightField:::p:102:p, space u:::p, comp depthLabel:::p::p, space :::p, comp depthField:::p:102:p, space :::x}}"
+					"$verticalGroup": "par l {seq l {par b {comp widthLabel::b:p::p, comp widthField::b:p::p, comp heightLabel::b:p::p, comp heightField::b:p::p, comp depthField::b:p::p, comp depthLabel::b:p::p}, space :0:10:x}}"
+				} ) {
+					name: "dimensionsPanel"
+					"border": new javax.swing.border.TitledBorder( "Dimensões" )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "widthLabel"
+						"font": new java.awt.Font( "Times New Roman", 1, 14 )
+						"text": "Largura:"
+						"labelFor": new FormReference( "widthField" )
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "widthField"
+						"editable": false
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "heightLabel"
+						"font": new java.awt.Font( "Times New Roman", 1, 14 )
+						"text": "Altura:"
+						"labelFor": new FormReference( "heightField" )
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "heightField"
+						"editable": false
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "depthField"
+						"editable": false
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "depthLabel"
+						"font": new java.awt.Font( "Times New Roman", 1, 14 )
+						"text": "Profundidade:"
+						"labelFor": new FormReference( "depthField" )
+					} )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 960, 515 )
+			"location": new java.awt.Point( 55, 10 )
+		} )
+	}
+}

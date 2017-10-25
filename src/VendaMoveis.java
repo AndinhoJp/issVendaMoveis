@@ -25,22 +25,10 @@ public class VendaMoveis {
 
     public static void main(final String[] args) throws Exception {
 
-//        JFrameLoginScreen jFrameLoginScreen= new JFrameLoginScreen();
-        ProductEntity product = new ProductEntity();
-        product.setProdId("123");
-        product.setNomeProd("Coisa");
-        product.setMarca("Coisa");
-        product.setAltura(123d);
-        product.setLargura(123d);
-        product.setProfundidade(123d);
-        product.setQuantidadeEstoque(2);
-        product.setPrecoCusto(123d);
-        product.setDescricao("asDASD");
-        product.setPrecoVenda(123d);
-
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
         FunctionaryEntity functionaryEntity = s.get(FunctionaryEntity.class, "0");
+        s.getTransaction().commit();
 
 //        JFrameViewProduct jFrameViewProduct = new JFrameViewProduct(product);
         JFrameManager jFrameManager = new JFrameManager(functionaryEntity);

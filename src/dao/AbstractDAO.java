@@ -22,19 +22,29 @@ public class AbstractDAO<E> {
     }
 
     protected Session currentSession() {
-        return sessionFactory.getCurrentSession();
+        Session currentSession = sessionFactory.getCurrentSession();
+        return currentSession;
     }
 
     protected Criteria criteria() {
-        return currentSession().createCriteria(entityClass);
+        currentSession().beginTransaction();
+        Criteria criteria = currentSession().createCriteria(entityClass);
+        currentSession().getTransaction().commit();
+        return criteria;
     }
 
     protected CriteriaQuery<E> criteriaQuery() {
-        return this.currentSession().getCriteriaBuilder().createQuery(getEntityClass());
+        currentSession().beginTransaction();
+        CriteriaQuery<E> query = this.currentSession().getCriteriaBuilder().createQuery(getEntityClass());
+        currentSession().getTransaction().commit();
+        return query;
     }
 
     protected Query namedQuery(String queryName) throws HibernateException {
-        return currentSession().getNamedQuery(requireNonNull(queryName));
+        currentSession().beginTransaction();
+        Query namedQuery = currentSession().getNamedQuery(requireNonNull(queryName));
+        currentSession().getTransaction().commit();
+        return namedQuery;
     }
 
     @SuppressWarnings("unchecked")
@@ -43,34 +53,51 @@ public class AbstractDAO<E> {
     }
 
     protected E uniqueResult(CriteriaQuery<E> criteriaQuery) throws HibernateException {
-        return AbstractProducedQuery.uniqueElement(
+        currentSession().beginTransaction();
+        E e = AbstractProducedQuery.uniqueElement(
                 currentSession()
                         .createQuery(requireNonNull(criteriaQuery))
                         .getResultList()
         );
+        currentSession().getTransaction().commit();
+        return e;
     }
 
     @SuppressWarnings("unchecked")
     protected E uniqueResult(Criteria criteria) throws HibernateException {
-        return (E) requireNonNull(criteria).uniqueResult();
+        currentSession().beginTransaction();
+        E e = (E) requireNonNull(criteria).uniqueResult();
+        currentSession().getTransaction().commit();
+        return e;
     }
 
     protected E uniqueResult(Query<E> query) throws HibernateException {
-        return requireNonNull(query).uniqueResult();
+        currentSession().beginTransaction();
+        E e = requireNonNull(query).uniqueResult();
+        currentSession().getTransaction().commit();
+        return e;
     }
 
     @SuppressWarnings("unchecked")
     protected List<E> list(Criteria criteria) throws HibernateException {
-        return requireNonNull(criteria).list();
+        currentSession().beginTransaction();
+        List list = requireNonNull(criteria).list();
+        currentSession().getTransaction().commit();
+        return list;
     }
 
     protected List<E> list(CriteriaQuery<E> criteria) throws HibernateException {
-        return currentSession().createQuery(requireNonNull(criteria)).getResultList();
+        currentSession().beginTransaction();
+        List<E> resultList = currentSession().createQuery(requireNonNull(criteria)).getResultList();
+        currentSession().getTransaction().commit();
+        return resultList;
     }
 
     protected List list(Class<E> critClass) throws HibernateException {
         currentSession().beginTransaction();
-        return currentSession().createCriteria(critClass).list();
+        List list = currentSession().createCriteria(critClass).list();
+        currentSession().getTransaction().commit();
+        return list;
     }
 
     protected List<E> list(Query<E> query) throws HibernateException {
@@ -79,11 +106,16 @@ public class AbstractDAO<E> {
 
     @SuppressWarnings("unchecked")
     protected E get(Serializable id) {
-        return (E) currentSession().get(entityClass, requireNonNull(id));
+        currentSession().beginTransaction();
+        E e = (E) currentSession().get(entityClass, requireNonNull(id));
+        currentSession().getTransaction().commit();
+        return e;
     }
 
     protected void remove() {
+        currentSession().beginTransaction();
         currentSession().remove(entityClass);
+        currentSession().getTransaction().commit();
     }
 
     protected E persist(E entity) throws HibernateException {
@@ -102,6 +134,8 @@ public class AbstractDAO<E> {
 
     public List listAllOrdered(String query) {
         currentSession().beginTransaction();
-        return currentSession().createSQLQuery(query).list();
+        List list = currentSession().createQuery(query).list();
+        currentSession().getTransaction().commit();
+        return list;
     }
 }

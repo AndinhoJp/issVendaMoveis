@@ -5,115 +5,115 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Produto", schema = "Vendas", catalog = "")
 public class ProductEntity {
-    private String prodId;
-    private String nomeProd;
-    private int quantidadeEstoque;
-    private String descricao;
-    private Double precoVenda;
-    private Double precoCusto;
-    private Double altura;
-    private Double largura;
-    private Double profundidade;
-    private String marca;
+    private String id;
+    private String name;
+    private int stock;
+    private String description;
+    private Double costPrice;
+    private Double salePrice;
+    private Double height;
+    private Double width;
+    private Double depth;
+    private String brand;
 
     @Id
     @Column(name = "prod_ID")
-    public String getProdId() {
-        return prodId;
+    public String getId() {
+        return id;
     }
 
-    public void setProdId(String prodId) {
-        this.prodId = prodId;
+    public void setId(String prodId) {
+        this.id = prodId;
     }
 
     @Basic
     @Column(name = "Nome_prod")
-    public String getNomeProd() {
-        return nomeProd;
+    public String getName() {
+        return name;
     }
 
-    public void setNomeProd(String nomeProd) {
-        this.nomeProd = nomeProd;
+    public void setName(String nomeProd) {
+        this.name = nomeProd;
     }
 
     @Basic
     @Column(name = "Quantidade_estoque")
-    public int getQuantidadeEstoque() {
-        return quantidadeEstoque;
+    public int getStock() {
+        return stock;
     }
 
-    public void setQuantidadeEstoque(int quantidadeEstoque) {
-        this.quantidadeEstoque = quantidadeEstoque;
+    public void setStock(int quantidadeEstoque) {
+        this.stock = quantidadeEstoque;
     }
 
     @Basic
     @Column(name = "Descricao")
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String descricao) {
+        this.description = descricao;
     }
 
     @Basic
     @Column(name = "preco_venda")
-    public Double getPrecoVenda() {
-        return precoVenda;
+    public Double getCostPrice() {
+        return costPrice;
     }
 
-    public void setPrecoVenda(Double precoVenda) {
-        this.precoVenda = precoVenda;
+    public void setCostPrice(Double precoVenda) {
+        this.costPrice = precoVenda;
     }
 
     @Basic
     @Column(name = "preco_custo")
-    public Double getPrecoCusto() {
-        return precoCusto;
+    public Double getSalePrice() {
+        return salePrice;
     }
 
-    public void setPrecoCusto(Double precoCusto) {
-        this.precoCusto = precoCusto;
+    public void setSalePrice(Double precoCusto) {
+        this.salePrice = precoCusto;
     }
 
     @Basic
     @Column(name = "altura")
-    public Double getAltura() {
-        return altura;
+    public Double getHeight() {
+        return height;
     }
 
-    public void setAltura(Double altura) {
-        this.altura = altura;
+    public void setHeight(Double altura) {
+        this.height = altura;
     }
 
     @Basic
     @Column(name = "largura")
-    public Double getLargura() {
-        return largura;
+    public Double getWidth() {
+        return width;
     }
 
-    public void setLargura(Double largura) {
-        this.largura = largura;
+    public void setWidth(Double largura) {
+        this.width = largura;
     }
 
     @Basic
     @Column(name = "profundidade")
-    public Double getProfundidade() {
-        return profundidade;
+    public Double getDepth() {
+        return depth;
     }
 
-    public void setProfundidade(Double profundidade) {
-        this.profundidade = profundidade;
+    public void setDepth(Double profundidade) {
+        this.depth = profundidade;
     }
 
     @Basic
     @Column(name = "marca")
-    public String getMarca() {
-        return marca;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setBrand(String marca) {
+        this.brand = marca;
     }
 
     @Override
@@ -123,32 +123,32 @@ public class ProductEntity {
 
         ProductEntity that = (ProductEntity) o;
 
-        if (quantidadeEstoque != that.quantidadeEstoque) return false;
-        if (prodId != null ? !prodId.equals(that.prodId) : that.prodId != null) return false;
-        if (nomeProd != null ? !nomeProd.equals(that.nomeProd) : that.nomeProd != null) return false;
-        if (descricao != null ? !descricao.equals(that.descricao) : that.descricao != null) return false;
-        if (precoVenda != null ? !precoVenda.equals(that.precoVenda) : that.precoVenda != null) return false;
-        if (precoCusto != null ? !precoCusto.equals(that.precoCusto) : that.precoCusto != null) return false;
-        if (altura != null ? !altura.equals(that.altura) : that.altura != null) return false;
-        if (largura != null ? !largura.equals(that.largura) : that.largura != null) return false;
-        if (profundidade != null ? !profundidade.equals(that.profundidade) : that.profundidade != null) return false;
-        if (marca != null ? !marca.equals(that.marca) : that.marca != null) return false;
+        if (stock != that.stock) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (costPrice != null ? !costPrice.equals(that.costPrice) : that.costPrice != null) return false;
+        if (salePrice != null ? !salePrice.equals(that.salePrice) : that.salePrice != null) return false;
+        if (height != null ? !height.equals(that.height) : that.height != null) return false;
+        if (width != null ? !width.equals(that.width) : that.width != null) return false;
+        if (depth != null ? !depth.equals(that.depth) : that.depth != null) return false;
+        if (brand != null ? !brand.equals(that.brand) : that.brand != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = prodId != null ? prodId.hashCode() : 0;
-        result = 31 * result + (nomeProd != null ? nomeProd.hashCode() : 0);
-        result = 31 * result + quantidadeEstoque;
-        result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
-        result = 31 * result + (precoVenda != null ? precoVenda.hashCode() : 0);
-        result = 31 * result + (precoCusto != null ? precoCusto.hashCode() : 0);
-        result = 31 * result + (altura != null ? altura.hashCode() : 0);
-        result = 31 * result + (largura != null ? largura.hashCode() : 0);
-        result = 31 * result + (profundidade != null ? profundidade.hashCode() : 0);
-        result = 31 * result + (marca != null ? marca.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + stock;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (costPrice != null ? costPrice.hashCode() : 0);
+        result = 31 * result + (salePrice != null ? salePrice.hashCode() : 0);
+        result = 31 * result + (height != null ? height.hashCode() : 0);
+        result = 31 * result + (width != null ? width.hashCode() : 0);
+        result = 31 * result + (depth != null ? depth.hashCode() : 0);
+        result = 31 * result + (brand != null ? brand.hashCode() : 0);
         return result;
     }
 }

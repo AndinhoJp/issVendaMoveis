@@ -22,7 +22,7 @@ public class ProductDAO extends AbstractDAO<ProductEntity> {
         }
     }
 
-    public Optional<ProductEntity> findById(Integer productId) {
+    public Optional<ProductEntity> findById(String productId) {
         return Optional.ofNullable(this.get(productId));
     }
 
@@ -31,11 +31,11 @@ public class ProductDAO extends AbstractDAO<ProductEntity> {
     }
 
     public List listAllOrdered() {
-        return listAllOrdered("SELECT * FROM Produto ORDER BY Nome_prod");
+        return listAllOrdered("from ProductEntity order by Nome_prod");
     }
 
     public void update(
-            Integer prodId,
+            String prodId,
             @Nullable String productName,
             @Nullable Integer quantity,
             @Nullable String description,
@@ -51,28 +51,41 @@ public class ProductDAO extends AbstractDAO<ProductEntity> {
 
         if (product.isPresent()) {
             ProductEntity productEntity = product.get();
-            if (productName != null) productEntity.setNomeProd(productName);
-            if (quantity != null && quantity >= 0) productEntity.setQuantidadeEstoque(quantity);
-            if (description != null) productEntity.setDescricao(description);
+            if (productName != null) productEntity.setName(productName);
+            if (quantity != null && quantity >= 0) productEntity.setStock(quantity);
+            if (description != null) productEntity.setDescription(description);
             if (costPrice != null && costPrice > 0f) {
-                productEntity.setPrecoCusto(costPrice);
+                productEntity.setSalePrice(costPrice);
                 if (salePrice != null && salePrice > costPrice)
-                    if (height != null) productEntity.setAltura(height);
+                    if (height != null) productEntity.setHeight(height);
             } else {
-                if (salePrice != null && salePrice > productEntity.getPrecoCusto())
-                    productEntity.setPrecoVenda(salePrice);
+                if (salePrice != null && salePrice > productEntity.getSalePrice())
+                    productEntity.setCostPrice(salePrice);
             }
-            if (height != null && height > 0f) productEntity.setAltura(height);
-            if (width != null && width > 0f) productEntity.setLargura(width);
-            if (depth != null && depth > 0f) productEntity.setProfundidade(depth);
-            if (brand != null) productEntity.setMarca(brand);
+            if (height != null && height > 0f) productEntity.setHeight(height);
+            if (width != null && width > 0f) productEntity.setWidth(width);
+            if (depth != null && depth > 0f) productEntity.setDepth(depth);
+            if (brand != null) productEntity.setBrand(brand);
 
             persist(productEntity);
         }
 
     }
 
-    public void delete(Integer id) {
+    public String update(ProductEntity product) {
+
+        Optional<ProductEntity> productOptional = findById(product.getId());
+
+        if (productOptional.isPresent()) {
+            persist(product);
+            return "Produto atualizado com sucesso.";
+        }
+
+        return "Ocorreu um erro durante a atualização do produto.";
+
+    }
+
+    public void delete(String id) {
         Optional<ProductEntity> product = findById(id);
         product.ifPresent(productEntity -> remove());
     }

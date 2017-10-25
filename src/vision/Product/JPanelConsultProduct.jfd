@@ -4,33 +4,32 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :21:21:p, comp jLabelNomeProduto:::p::p, space :11:11:p, comp jTextFieldCampoPesquisa:::p:440:p, space :256:256:p, comp jButtonPesquisar:::p::p}, seq {space :20:20:p, comp jScrollPane2:::p:900:p}, seq {space :596:596:p, comp jButtonDetalhes:::p::p, space :11:11:p, comp jButtonAdicionarAoCarrinho:::p::p, space :20:20:p, comp jButtonEditarProduto:::p::p}}"
-			"$verticalGroup": "par l {seq {space :3:3:p, par l {seq {space :6:6:p, comp jLabelNomeProduto:::p::p}, seq {space :2:2:p, comp jTextFieldCampoPesquisa:::p::p}, comp jButtonPesquisar:::p::p}, space :8:8:p, comp jScrollPane2:::p::p, space :12:12:p, par l {comp jButtonAdicionarAoCarrinho:::p::p, seq {space :1:1:p, par l {comp jButtonDetalhes:::p::p, comp jButtonEditarProduto:::p::p}}}}}"
+			"$horizontalGroup": "par l {seq l {par t {comp detailsButton:::p::p, par l {seq {space :21:21:p, comp nameLabel:::p::p, space :11:11:p, comp searchField:::p:440:p, space :256:256:p, comp searchButton:::p::p}, seq {space :20:20:p, comp jScrollPane2:::p:900:p}}}, space :p:20:p}}"
+			"$verticalGroup": "par l {seq {space :3:3:p, par l {seq {space :6:6:p, comp nameLabel:::p::p}, seq {space :2:2:p, comp searchField:::p::p}, comp searchButton:::p::p}, space :8:8:p, comp jScrollPane2:::p::p, space :::p, comp detailsButton:::p::p, space :::p}}"
 		} ) {
 			name: "this"
 			"maximumSize": new java.awt.Dimension( 995, 595 )
 			"minimumSize": new java.awt.Dimension( 995, 595 )
 			"preferredSize": new java.awt.Dimension( 995, 595 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jLabelNomeProduto"
+				name: "nameLabel"
 				"font": new java.awt.Font( "Arial", 0, 14 )
 				"text": "Nome do produto:"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "jTextFieldCampoPesquisa"
+				name: "searchField"
 				"font": new java.awt.Font( "Arial", 0, 14 )
-				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "jTextFieldCampoPesquisaKeyPressed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "jButtonPesquisar"
+				name: "searchButton"
 				"font": new java.awt.Font( "Arial", 0, 11 )
 				"text": "Pesquisar"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonPesquisarActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "searchButtonActionPerformed", true ) )
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "jScrollPane2"
 				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "jTableProdutos"
+					name: "resultsTable"
 					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
 						add( "ID:" )
 						add( "Nome:" )
@@ -59,155 +58,14 @@ new FormModel {
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "jButtonDetalhes"
+				name: "detailsButton"
 				"font": new java.awt.Font( "Tahoma", 0, 12 )
 				"text": "Detalhes"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonDetalhesActionPerformed", true ) )
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "jButtonAdicionarAoCarrinho"
-				"text": "Adicionar ao Carrinho"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonAdicionarAoCarrinhoActionPerformed", true ) )
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "jButtonEditarProduto"
-				"font": new java.awt.Font( "Tahoma", 0, 12 )
-				"text": "Editar"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonEditarProdutoActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "detailsButtonActionPerformed", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 10, 45 )
-			"size": new java.awt.Dimension( 940, 525 )
-		} )
-		add( new FormContainer( "javax.swing.JInternalFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-			name: "jInternalFrameAdicionandoAoCarrinho"
-			"title": "Adicionando ao Carrinho"
-			"visible": true
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jLabelAdicionarAoCarrinho"
-				"font": new java.awt.Font( "Tahoma", 0, 18 )
-				"horizontalAlignment": 0
-				"text": "Adicionar ao Carrinho"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 153
-				"y": 25
-				"width": 209
-				"height": 31
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jLabelNomeProdutoAdd"
-				"font": new java.awt.Font( "Tahoma", 0, 12 )
-				"text": "Nome do Produto"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 37
-				"y": 100
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jLabelValorUnitarioAdd"
-				"font": new java.awt.Font( "Tahoma", 0, 12 )
-				"text": "Valor Unitário"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 59
-				"y": 176
-				"width": 80
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jLabelQuantidadeDisponivelAdd"
-				"font": new java.awt.Font( "Tahoma", 0, 12 )
-				"text": "Quantidade Disponível"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 15
-				"y": 138
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jLabelQuantidadeDesejadaAdd"
-				"font": new java.awt.Font( "Tahoma", 0, 12 )
-				"text": "Quantidade Desejada"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 260
-				"y": 140
-				"width": 122
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jLabelValorTotalProdutoAdd"
-				"font": new java.awt.Font( "Tahoma", 0, 12 )
-				"text": "Valor Total do Produto"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 10
-				"y": 210
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "jTextFieldNomeProdutoAdd"
-				"editable": false
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 150
-				"y": 100
-				"width": 340
-				"height": 20
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "jTextFieldValorUnitarioAdd"
-				"editable": false
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 149
-				"y": 174
-				"width": 104
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "jTextFieldQuantidadeDisponivelAdd"
-				"editable": false
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 150
-				"y": 140
-				"width": 100
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "jTextFieldQuantidadeDesejadaAdd"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jTextFieldQuantidadeDesejadaAddActionPerformed", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 380
-				"y": 140
-				"width": 110
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "jTextFieldValorTotalProdutoAdd"
-				"editable": false
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 150
-				"y": 210
-				"width": 100
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "jButtonCalcularTotal"
-				"font": new java.awt.Font( "Tahoma", 0, 12 )
-				"text": "Calcular Valor Total"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonCalcularTotalActionPerformed", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 300
-				"y": 170
-				"width": 190
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "jButtonCancelarAdd"
-				"font": new java.awt.Font( "Tahoma", 0, 12 )
-				"text": "Cancelar"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonCancelarAddActionPerformed", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 120
-				"y": 280
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "jButtonAdicionarProdutosAdd"
-				"font": new java.awt.Font( "Tahoma", 0, 12 )
-				"text": "Adicionar Produtos"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButtonAdicionarProdutosAddActionPerformed", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 360
-				"y": 280
-			} )
-		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 190, 585 )
-			"size": new java.awt.Dimension( 569, 351 )
+			"size": new java.awt.Dimension( 940, 505 )
 		} )
 	}
 }
