@@ -1,7 +1,7 @@
 package ControlaFuncionario;
 
 import Telas.JFrameGerente;
-import Autenticação.ControleLogin;
+import Autenticacao.ControleLogin;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

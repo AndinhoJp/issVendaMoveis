@@ -5,7 +5,7 @@
  */
 package issvendamoveis;
 
-import Autenticação.JFrameTelaLogin;
+import Autenticacao.JFrameTelaLogin;
 import ControleCliente.JPanelCadastroCliente;
 import Hibernate.HibernateUtil;
 import org.hibernate.Session;
