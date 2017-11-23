@@ -5,7 +5,9 @@
  */
 package ControleCliente;
 
-import DAO.Cliente;
+import Entity.Cliente;
+import static java.awt.Color.black;
+import static java.awt.Color.red;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -224,6 +226,11 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
         jLabelSexo.setText("Sexo:");
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
+        jComboBoxSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSexoActionPerformed(evt);
+            }
+        });
 
         jLabelNomeMae.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelNomeMae.setText("Nome da mãe:");
@@ -342,21 +349,21 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabelSobrenome)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextFieldSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabelSexo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabelDataNascimento)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jDateChooserDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLabelEstadoCivil)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jComboBoxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(jComboBoxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabelSobrenome)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jTextFieldSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabelSexo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jTextFieldEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -457,26 +464,37 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldNomeMaeActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        if (jFormattedTextFieldCPFCliente.getText() == null
-                || jTextFieldPrimeiroNome.getText() == null
-                || jTextFieldSobrenome.getText() == null
-                || jTextFieldRG.getText() == null
-                || jTextFieldEndereço.getText() == null
-                || jTextFieldEndNumero.getText() == null
-                || jTextFieldCidade.getText() == null
-                || jTextFieldBairro.getText() == null
-                || jFormattedTextFieldTelRes.getText() == null
-                || jTextFieldNomeMae.getText() == null
-                || jTextFieldNomePai.getText() == null) {
-            JOptionPane.showConfirmDialog(null, "Um dos campos obreigatório está em branco!");
+        if (jFormattedTextFieldCPFCliente.getText().equals("")
+                || jTextFieldPrimeiroNome.getText().equals("")
+                || jTextFieldSobrenome.getText().equals("")
+                || jTextFieldRG.getText().equals("")
+                || jTextFieldEndereço.getText().equals("")
+                || jTextFieldEndNumero.getText().equals("")
+                || jTextFieldCidade.getText().equals("")
+                || jTextFieldBairro.getText().equals("")
+                || jFormattedTextFieldTelRes.getText().equals("")
+                || jTextFieldNomeMae.getText().equals("")
+                || jTextFieldNomePai.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Um dos campos obrigatório está em branco!");
+            campoObrigatorio();
         } else {
+            jLabelPrimeiroNome.setForeground(black);
+            jLabelSobrenome.setForeground(black);
+            jLabelRG.setForeground(black);
+            jLabelEndereço.setForeground(black);
+            jLabelEndNumero.setForeground(black);
+            jLabelCidade.setForeground(black);
+            jLabelBairro.setForeground(black);
+            jLabelTelRes.setForeground(black);
+            jLabelNomeMae.setForeground(black);
+            jLabelNomePai.setForeground(black);
             String cpf = jFormattedTextFieldCPFCliente.getText();
             cpf = cpf.replace(".", "");
             cpf = cpf.replace("-", "");
             try {
                 Cliente cliente = new ControlaCliente().cadastraCliente(cpf, jTextFieldPrimeiroNome.getText(), jTextFieldSobrenome.getText(), jFormattedTextFieldCPFCliente.getText(), jTextFieldRG.getText(), jDateChooserDataNascimento.getDate(), jTextFieldEndereço.getText(), jTextFieldEndNumero.getText(), jTextFieldEndComplemento.getText(), jTextFieldCidade.getText(), jComboBoxEstado.getSelectedItem().toString(), jFormattedTextFieldTelCel.getText(), jFormattedTextFieldTelCel.getText(), jTextFieldEmail.getText(), jTextFieldNomeMae.getText(), jTextFieldNomePai.getText(), jComboBoxSexo.getSelectedItem().toString(), jTextFieldBairro.getText(), jComboBoxEstadoCivil.getSelectedItem().toString());
-                JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!");
-            } catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar o novo cliente!");
             }
         }
@@ -500,59 +518,52 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
         cpf = cpf.replace("-", "");
         if (validadorCPF(cpf) == false) {
             JOptionPane.showMessageDialog(null, "O CPF informado é invalido. Confira os números e tente novamente.");
+            bloqueiaCampos();
         } else {
             boolean valCPF = new ControlaCliente().verificaCliente(cpf);
             if (valCPF == true) {
+                bloqueiaCampos();
                 JOptionPane.showMessageDialog(null, "O CPF informado já está cadastro no sistema!");
-                jTextFieldBairro.setEnabled(false);
-                jTextFieldCidade.setEnabled(false);
-                jTextFieldEmail.setEnabled(false);
-                jTextFieldEndComplemento.setEnabled(false);
-                jTextFieldEndNumero.setEnabled(false);
-                jTextFieldEndereço.setEnabled(false);
-                jTextFieldNomeMae.setEnabled(false);
-                jTextFieldNomePai.setEnabled(false);
-                jTextFieldPrimeiroNome.setEnabled(false);
-                jTextFieldRG.setEnabled(false);
-                jTextFieldSobrenome.setEnabled(false);
-                jFormattedTextFieldTelCel.setEnabled(false);
-                jFormattedTextFieldTelRes.setEnabled(false);
             } else {
-                jTextFieldBairro.setEnabled(true);
-                jTextFieldCidade.setEnabled(true);
-                jTextFieldEmail.setEnabled(true);
-                jTextFieldEndComplemento.setEnabled(true);
-                jTextFieldEndNumero.setEnabled(true);
-                jTextFieldEndereço.setEnabled(true);
-                jTextFieldNomeMae.setEnabled(true);
-                jTextFieldNomePai.setEnabled(true);
-                jTextFieldPrimeiroNome.setEnabled(true);
-                jTextFieldRG.setEnabled(true);
-                jTextFieldSobrenome.setEnabled(true);
-                jFormattedTextFieldTelCel.setEnabled(true);
-                jFormattedTextFieldTelRes.setEnabled(true);
+                jTextFieldBairro.setEditable(true);
+                jTextFieldCidade.setEditable(true);
+                jTextFieldEmail.setEditable(true);
+                jTextFieldEndComplemento.setEditable(true);
+                jTextFieldEndNumero.setEditable(true);
+                jTextFieldEndereço.setEditable(true);
+                jTextFieldNomeMae.setEditable(true);
+                jTextFieldNomePai.setEditable(true);
+                jTextFieldPrimeiroNome.setEditable(true);
+                jTextFieldRG.setEditable(true);
+                jTextFieldSobrenome.setEditable(true);
+                jFormattedTextFieldTelCel.setEditable(true);
+                jFormattedTextFieldTelRes.setEditable(true);
             }
         }
     }//GEN-LAST:event_jFormattedTextFieldCPFClienteFocusLost
 
-    public void limpaCampos(){
-                jTextFieldBairro.setText("");
-                jTextFieldCidade.setText("");
-                jTextFieldEmail.setText("");
-                jTextFieldEndComplemento.setText("");
-                jTextFieldEndNumero.setText("");
-                jTextFieldEndereço.setText("");
-                jTextFieldNomeMae.setText("");
-                jTextFieldNomePai.setText("");
-                jTextFieldPrimeiroNome.setText("");
-                jTextFieldRG.setText("");
-                jTextFieldSobrenome.setText("");
-                jFormattedTextFieldTelCel.setText("");
-                jFormattedTextFieldTelRes.setText("");
-                jFormattedTextFieldCPFCliente.setText("");
+    private void jComboBoxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSexoActionPerformed
+
+    public void limpaCampos() {
+        jTextFieldBairro.setText("");
+        jTextFieldCidade.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldEndComplemento.setText("");
+        jTextFieldEndNumero.setText("");
+        jTextFieldEndereço.setText("");
+        jTextFieldNomeMae.setText("");
+        jTextFieldNomePai.setText("");
+        jTextFieldPrimeiroNome.setText("");
+        jTextFieldRG.setText("");
+        jTextFieldSobrenome.setText("");
+        jFormattedTextFieldTelCel.setText("");
+        jFormattedTextFieldTelRes.setText("");
+        jFormattedTextFieldCPFCliente.setText("");
 
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
@@ -596,4 +607,73 @@ public class JPanelCadastroCliente extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldSobrenome;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
+
+    public void campoObrigatorio() {
+        if (jTextFieldPrimeiroNome.getText().equals("")) {
+            jLabelPrimeiroNome.setForeground(red);
+        } else {
+            jLabelPrimeiroNome.setForeground(black);
+        }
+        if (jTextFieldSobrenome.getText().equals("")) {
+            jLabelSobrenome.setForeground(red);
+        } else {
+            jLabelSobrenome.setForeground(black);
+        }
+        if (jTextFieldRG.getText().equals("")) {
+            jLabelRG.setForeground(red);
+        } else {
+            jLabelRG.setForeground(black);
+        }
+        if (jTextFieldEndereço.getText().equals("")) {
+            jLabelEndereço.setForeground(red);
+        } else {
+            jLabelEndereço.setForeground(black);
+        }
+        if (jTextFieldEndNumero.getText().equals("")) {
+            jLabelEndNumero.setForeground(red);
+        } else {
+            jLabelEndNumero.setForeground(black);
+        }
+        if (jTextFieldCidade.getText().equals("")) {
+            jLabelCidade.setForeground(red);
+        } else {
+            jLabelCidade.setForeground(black);
+        }
+        if (jTextFieldBairro.getText().equals("")) {
+            jLabelBairro.setForeground(red);
+        } else {
+            jLabelBairro.setForeground(black);
+        }
+        if (jFormattedTextFieldTelRes.getText().equals("")) {
+            jLabelTelRes.setForeground(red);
+        } else {
+            jLabelTelRes.setForeground(black);
+        }
+        if (jTextFieldNomeMae.getText().equals("")) {
+            jLabelNomeMae.setForeground(red);
+        } else {
+            jLabelNomeMae.setForeground(black);
+        }
+        if (jTextFieldNomePai.getText().equals("")) {
+            jLabelNomePai.setForeground(red);
+        } else {
+            jLabelNomePai.setForeground(black);
+        }
+    }
+
+    void bloqueiaCampos() {
+        jTextFieldBairro.setEditable(false);
+        jTextFieldCidade.setEditable(false);
+        jTextFieldEmail.setEditable(false);
+        jTextFieldEndComplemento.setEditable(false);
+        jTextFieldEndNumero.setEditable(false);
+        jTextFieldEndereço.setEditable(false);
+        jTextFieldNomeMae.setEditable(false);
+        jTextFieldNomePai.setEditable(false);
+        jTextFieldPrimeiroNome.setEditable(false);
+        jTextFieldRG.setEditable(false);
+        jTextFieldSobrenome.setEditable(false);
+        jFormattedTextFieldTelCel.setEditable(false);
+        jFormattedTextFieldTelRes.setEditable(false);
+    }
 }

@@ -1,6 +1,6 @@
 package ControlaFuncionario;
 
-import DAO.Funcionario;
+import Entity.Funcionario;
 import Hibernate.HibernateUtil;
 import java.util.ArrayList;
 import java.util.Collections;

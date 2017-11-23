@@ -5,8 +5,8 @@
  */
 package Autenticacao;
 
-import DAO.Acesso;
-import DAO.Funcionario;
+import Entity.Acesso;
+import Entity.Funcionario;
 import Hibernate.HibernateUtil;
 import Telas.JFrameGerente;
 import java.util.ArrayList;

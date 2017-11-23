@@ -5,8 +5,8 @@
  */
 package Autenticacao;
 
-import DAO.Acesso;
-import DAO.Funcionario;
+import Entity.Acesso;
+import Entity.Funcionario;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +21,10 @@ public class jFrameCriaçãoLogin extends javax.swing.JFrame {
         this.setTitle("Criação do acesso de - " + funcionario.getIdFunc());
         jPasswordFieldSenha.setText("123456");
         jPasswordFieldConfirSenha.setText("123456");
+        jTextFieldNome.setText(funcionario.getNome());
+        jTextFieldIdFunc.setText(funcionario.getIdFunc());
         initComponents();
+       Funcionario func = funcionario;
     }
 
     private jFrameCriaçãoLogin() {
@@ -200,7 +203,6 @@ public class jFrameCriaçãoLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        //Funcionario funcionario = jTextFieldIdFunc.getText();
         if(jPasswordFieldSenha.getText().equals("") ||
            jPasswordFieldConfirSenha.getText().equals("") ||
            jTextFieldLogin.getText().equals("")){
@@ -211,7 +213,7 @@ public class jFrameCriaçãoLogin extends javax.swing.JFrame {
         }
         if(confereId.confereDuplicidade(jTextFieldLogin.getText()) == false){
             try{
-               // Acesso acesso = new Autenticação.ControleLogin().criarAcesso(jTextFieldLogin.getText(), jTextFieldIdFunc.getText(), jPasswordFieldSenha.getText());
+              // Acesso acesso = new ControleAcesso().criarAcesso(jTextFieldLogin.getText(), jTextFieldIdFunc.getText(), jPasswordFieldSenha.getText());
             } catch(Exception e){
                 
             }

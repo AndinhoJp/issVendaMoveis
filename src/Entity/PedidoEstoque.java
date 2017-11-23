@@ -1,4 +1,4 @@
-package DAO;
+package Entity;
 // Generated 15/09/2017 22:43:36 by Hibernate Tools 4.3.1
 
 

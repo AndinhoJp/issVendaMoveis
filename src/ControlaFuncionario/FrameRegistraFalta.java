@@ -1,7 +1,7 @@
 package ControlaFuncionario;
 
-import DAO.Faltas;
-import DAO.Funcionario;
+import Entity.Faltas;
+import Entity.Funcionario;
 import javax.swing.JOptionPane;
 
 public class FrameRegistraFalta extends javax.swing.JFrame {

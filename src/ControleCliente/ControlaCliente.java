@@ -5,7 +5,7 @@
  */
 package ControleCliente;
 
-import DAO.Cliente;
+import Entity.Cliente;
 import Hibernate.HibernateUtil;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -55,7 +55,16 @@ public Cliente cadastraCliente(String cliId, String nome, String sobrenome, Stri
         return cliente;
 }
     
-public boolean persisteCliente(Cliente cliente){
+public boolean persisteCliente(Cliente cliente, String endereço, String numero, String complemento, String cidade, String estado, String bairro, String TelFixo, String telMovel, String email){
+    cliente.setEndereco(endereço);
+    cliente.setNumero(numero);
+    cliente.setComplemento(complemento);
+    cliente.setCidade(cidade);
+    cliente.setEstado(estado);
+    cliente.setBairro(bairro);
+    cliente.setTelFixo(TelFixo);
+    cliente.setTelMovel(telMovel);
+    cliente.setEmail(email);
     Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
         try {

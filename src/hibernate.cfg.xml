@@ -48,17 +48,17 @@ Contributor(s):
     <property name="hibernate.connection.password">sis975</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
-    <mapping resource="DAO/Acesso.hbm.xml"/>
-    <mapping resource="DAO/Gastos.hbm.xml"/>
-    <mapping resource="DAO/Produto.hbm.xml"/>
-    <mapping resource="DAO/Vendas.hbm.xml"/>
-    <mapping resource="DAO/ProdPedEstoque.hbm.xml"/>
-    <mapping resource="DAO/Funcionario.hbm.xml"/>
-    <mapping resource="DAO/Faltas.hbm.xml"/>
-    <mapping resource="DAO/Parcela.hbm.xml"/>
-    <mapping resource="DAO/ProdVenda.hbm.xml"/>
-    <mapping resource="DAO/Cliente.hbm.xml"/>
-    <mapping resource="DAO/ImagemProduto.hbm.xml"/>
-    <mapping resource="DAO/PedidoEstoque.hbm.xml"/>
+    <mapping resource="Entity/Acesso.hbm.xml"/>
+    <mapping resource="Entity/Gastos.hbm.xml"/>
+    <mapping resource="Entity/Produto.hbm.xml"/>
+    <mapping resource="Entity/Vendas.hbm.xml"/>
+    <mapping resource="Entity/ProdPedEstoque.hbm.xml"/>
+    <mapping resource="Entity/Funcionario.hbm.xml"/>
+    <mapping resource="Entity/Faltas.hbm.xml"/>
+    <mapping resource="Entity/Parcela.hbm.xml"/>
+    <mapping resource="Entity/ProdVenda.hbm.xml"/>
+    <mapping resource="Entity/Cliente.hbm.xml"/>
+    <mapping resource="Entity/ImagemProduto.hbm.xml"/>
+    <mapping resource="Entity/PedidoEstoque.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

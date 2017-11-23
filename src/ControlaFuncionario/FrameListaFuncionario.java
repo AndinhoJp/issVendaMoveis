@@ -1,6 +1,6 @@
 package ControlaFuncionario;
 
-import DAO.Funcionario;
+import Entity.Funcionario;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JFrame;

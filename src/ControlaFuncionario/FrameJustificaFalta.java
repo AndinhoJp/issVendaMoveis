@@ -1,6 +1,6 @@
 package ControlaFuncionario;
 
-import DAO.Faltas;
+import Entity.Faltas;
 import javax.swing.JOptionPane;
 
 public class FrameJustificaFalta extends javax.swing.JFrame {

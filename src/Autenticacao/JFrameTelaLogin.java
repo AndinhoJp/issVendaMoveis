@@ -138,10 +138,7 @@ public class JFrameTelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldLoginActionPerformed
 
     private void jButtonAutenticarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAutenticarActionPerformed
-        boolean login = new ControleLogin().verificaAcesso(jTextFieldLogin.getText(), jPassword.getText());
-        if (login) {
-            dispose();
-        }
+        autenticar();
     }//GEN-LAST:event_jButtonAutenticarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -178,12 +175,9 @@ public class JFrameTelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordFocusLost
 
     private void jPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordKeyPressed
-      if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-          boolean login = new ControleLogin().verificaAcesso(jTextFieldLogin.getText(), jPassword.getText());
-        if (login) {
-            dispose();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            autenticar();
         }
-      }
     }//GEN-LAST:event_jPasswordKeyPressed
 
     /**
@@ -219,6 +213,13 @@ public class JFrameTelaLogin extends javax.swing.JFrame {
                 new JFrameTelaLogin().setVisible(true);
             }
         });
+    }
+
+    void autenticar() {
+        boolean login = new ControleLogin().verificaAcesso(jTextFieldLogin.getText(), jPassword.getText());
+        if (login) {
+            dispose();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

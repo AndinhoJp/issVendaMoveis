@@ -61,6 +61,7 @@ public class JFrameGerente extends javax.swing.JFrame {
         jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1030, 730));
         setResizable(false);
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/redebras-topo-menor.jpg"))); // NOI18N
@@ -133,20 +134,18 @@ public class JFrameGerente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelLogo)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jLabelLogo)
+                    .addComponent(jPanelBase, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelLogo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelBase, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();

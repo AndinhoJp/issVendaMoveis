@@ -1,7 +1,7 @@
 package ControlaFuncionario;
 
-import DAO.Faltas;
-import DAO.Funcionario;
+import Entity.Faltas;
+import Entity.Funcionario;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JFrame;

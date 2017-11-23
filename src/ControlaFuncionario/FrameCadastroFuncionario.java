@@ -1,6 +1,6 @@
 package ControlaFuncionario;
 
-import DAO.Funcionario;
+import Entity.Funcionario;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;

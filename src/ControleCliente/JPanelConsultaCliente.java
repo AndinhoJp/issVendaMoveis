@@ -5,7 +5,8 @@
  */
 package ControleCliente;
 
-import DAO.Cliente;
+import Entity.Cliente;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -104,6 +105,7 @@ public class JPanelConsultaCliente extends javax.swing.JPanel {
         jLabelPrimeiroNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelPrimeiroNome.setText("Primeiro nome:");
 
+        jTextFieldPrimeiroNome.setEditable(false);
         jTextFieldPrimeiroNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPrimeiroNomeActionPerformed(evt);
@@ -112,6 +114,10 @@ public class JPanelConsultaCliente extends javax.swing.JPanel {
 
         jLabelSobrenome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSobrenome.setText("Sobrenome:");
+
+        jTextFieldSobrenome.setEditable(false);
+
+        jTextFieldRG.setEditable(false);
 
         jLabelRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelRG.setText("R.G.:");
@@ -158,6 +164,7 @@ public class JPanelConsultaCliente extends javax.swing.JPanel {
         jLabelNomeMae.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelNomeMae.setText("Nome da mãe:");
 
+        jTextFieldNomeMae.setEditable(false);
         jTextFieldNomeMae.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNomeMaeActionPerformed(evt);
@@ -169,6 +176,8 @@ public class JPanelConsultaCliente extends javax.swing.JPanel {
 
         jLabelNomePai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelNomePai.setText("Nome do pai:");
+
+        jTextFieldNomePai.setEditable(false);
 
         jButtonAtualizarCadastro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonAtualizarCadastro.setText("Editar Cadastro");
@@ -188,6 +197,11 @@ public class JPanelConsultaCliente extends javax.swing.JPanel {
                 jFormattedTextFieldCPFClienteActionPerformed(evt);
             }
         });
+        jFormattedTextFieldCPFCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jFormattedTextFieldCPFClienteKeyPressed(evt);
+            }
+        });
 
         jButtonPesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
@@ -196,6 +210,12 @@ public class JPanelConsultaCliente extends javax.swing.JPanel {
                 jButtonPesquisarActionPerformed(evt);
             }
         });
+
+        jTextFieldDataNascimento.setEditable(false);
+
+        jTextFieldSexo.setEditable(false);
+
+        jTextFieldEstadoCivil.setEditable(false);
 
         jButtonSalvarEdição.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonSalvarEdição.setText("Salvar edição");
@@ -406,6 +426,44 @@ public class JPanelConsultaCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jFormattedTextFieldCPFClienteActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+
+        buscar();
+
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jButtonSalvarEdiçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarEdiçãoActionPerformed
+        atualizarCadastroCliente();
+        boolean persiste = new ControlaCliente().persisteCliente(cliente, jTextFieldEndereço.getText(), jTextFieldEndNumero.getText(), jTextFieldEndComplemento.getText(), jTextFieldCidade.getText(), jTextFieldEstado.getText(), jTextFieldBairro.getText(), jTextFieldTelRes.getText(), jTextFieldTelCel.getText(), jTextFieldEmail.getText());
+        if (persiste) {
+            jButtonSalvarEdição.setEnabled(false);
+            jButtonAtualizarCadastro.setEnabled(true);
+            jTextFieldBairro.setEnabled(false);
+            jTextFieldCidade.setEnabled(false);
+            jTextFieldEmail.setEnabled(false);
+            jTextFieldEndComplemento.setEnabled(false);
+            jTextFieldEndNumero.setEnabled(false);
+            jTextFieldEndereço.setEnabled(false);
+            jTextFieldEstado.setEnabled(false);
+            jTextFieldEstadoCivil.setEnabled(false);
+            jTextFieldSexo.setEnabled(false);
+            jTextFieldTelCel.setEnabled(false);
+            jTextFieldTelRes.setEnabled(false);
+            jButtonSalvarEdição.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Cadastro atualizado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar cadastro!");
+        }
+
+
+    }//GEN-LAST:event_jButtonSalvarEdiçãoActionPerformed
+
+    private void jFormattedTextFieldCPFClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCPFClienteKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            buscar();
+        }
+    }//GEN-LAST:event_jFormattedTextFieldCPFClienteKeyPressed
+
+    void buscar() {
         String cpf = jFormattedTextFieldCPFCliente.getText();
         cpf = cpf.replace(".", "");
         cpf = cpf.replace("-", "");
@@ -431,33 +489,7 @@ public class JPanelConsultaCliente extends javax.swing.JPanel {
             jTextFieldTelCel.setText(cliente.getTelMovel());
             jTextFieldTelRes.setText(cliente.getTelFixo());
         }
-    }//GEN-LAST:event_jButtonPesquisarActionPerformed
-
-    private void jButtonSalvarEdiçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarEdiçãoActionPerformed
-        atualizarCadastroCliente();
-        boolean persiste = new ControlaCliente().persisteCliente(cliente);
-        if (persiste) {
-            JOptionPane.showMessageDialog(null, "Cadastro atualizado com sucesso!");
-            jButtonSalvarEdição.setEnabled(false);
-            jButtonAtualizarCadastro.setEnabled(true);
-            jTextFieldBairro.setEnabled(false);
-            jTextFieldCidade.setEnabled(false);
-            jTextFieldEmail.setEnabled(false);
-            jTextFieldEndComplemento.setEnabled(false);
-            jTextFieldEndNumero.setEnabled(false);
-            jTextFieldEndereço.setEnabled(false);
-            jTextFieldEstado.setEnabled(false);
-            jTextFieldEstadoCivil.setEnabled(false);
-            jTextFieldSexo.setEnabled(false);
-            jTextFieldTelCel.setEnabled(false);
-            jTextFieldTelRes.setEnabled(false);
-            jButtonSalvarEdição.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar cadastro!");
-        }
-
-
-    }//GEN-LAST:event_jButtonSalvarEdiçãoActionPerformed
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
