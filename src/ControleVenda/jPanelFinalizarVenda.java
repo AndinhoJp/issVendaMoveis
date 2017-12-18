@@ -5,6 +5,7 @@
  */
 package ControleVenda;
 
+import Autenticacao.JFrameTelaLoginDesconto;
 import ControlaProduto.ControlaProduto;
 import ControleCliente.ControlaCliente;
 import ControleVenda.Controladoras.ControlaProdVenda;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -116,8 +118,8 @@ public class jPanelFinalizarVenda extends javax.swing.JPanel {
         jTextFieldNome = new javax.swing.JTextField();
         jLabelSobrenome = new javax.swing.JLabel();
         jTextFieldSobrenome = new javax.swing.JTextField();
-        jLabelEndereço = new javax.swing.JLabel();
-        jTextFieldEndereço = new javax.swing.JTextField();
+        jLabelEndereco = new javax.swing.JLabel();
+        jTextFieldEndereco = new javax.swing.JTextField();
         jLabelEndNumero = new javax.swing.JLabel();
         jTextFieldEndNumero = new javax.swing.JTextField();
         jLabelEndComplemento = new javax.swing.JLabel();
@@ -181,10 +183,10 @@ public class jPanelFinalizarVenda extends javax.swing.JPanel {
 
         jTextFieldSobrenome.setEditable(false);
 
-        jLabelEndereço.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabelEndereço.setText("Endereço:");
+        jLabelEndereco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabelEndereco.setText("Endereco:");
 
-        jTextFieldEndereço.setEditable(false);
+        jTextFieldEndereco.setEditable(false);
 
         jLabelEndNumero.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabelEndNumero.setText("Número:");
@@ -319,9 +321,9 @@ public class jPanelFinalizarVenda extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButtonPesquisar))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelEndereço)
+                                .addComponent(jLabelEndereco)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabelEndNumero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -401,8 +403,8 @@ public class jPanelFinalizarVenda extends javax.swing.JPanel {
                     .addComponent(jTextFieldSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEndereço)
+                    .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEndereco)
                     .addComponent(jLabelEndNumero)
                     .addComponent(jTextFieldEndNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelEndComplemento)
@@ -470,8 +472,8 @@ public class jPanelFinalizarVenda extends javax.swing.JPanel {
 
         int n = JOptionPane.showConfirmDialog(
                 null,
-                "Essa operação não pode ser revertida. Deseja continuar?",
-                "Confirmar Opção",
+                "Essa operacão não pode ser revertida. Deseja continuar?",
+                "Confirmar Opcão",
                 JOptionPane.YES_NO_OPTION);
         if (n == JOptionPane.YES_OPTION) {
             switch (jComboBoxFormaPagamento.getSelectedIndex()) {
@@ -560,7 +562,7 @@ public class jPanelFinalizarVenda extends javax.swing.JPanel {
             jTextFieldCidade.setText(cliente.getCidade());
             jTextFieldEstado.setText(cliente.getEstado());
             jTextFieldBairro.setText(cliente.getBairro());
-            jTextFieldEndereço.setText(cliente.getEndereco());
+            jTextFieldEndereco.setText(cliente.getEndereco());
             jTextFieldEndNumero.setText(cliente.getNumero());
             jTextFieldEndComplemento.setText(cliente.getComplemento());
             jTextFieldTelRes.setText(cliente.getTelFixo());
@@ -579,7 +581,7 @@ public class jPanelFinalizarVenda extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelEndComplemento;
     private javax.swing.JLabel jLabelEndNumero;
-    private javax.swing.JLabel jLabelEndereço;
+    private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelEstado;
     private javax.swing.JLabel jLabelFinalizarVenda;
     private javax.swing.JLabel jLabelNome;
@@ -597,7 +599,7 @@ public class jPanelFinalizarVenda extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldEndComplemento;
     private javax.swing.JTextField jTextFieldEndNumero;
-    private javax.swing.JTextField jTextFieldEndereço;
+    private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldEstado;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldSobrenome;

@@ -379,7 +379,7 @@ public class JPanelCadastroFuncionario extends javax.swing.JPanel {
                 if (!controlaAcesso.verificaLogin(jTextFieldLogin.getText())) {
                     try {
                         Entity.Funcionario funcionario = new ControlaFuncionario().criarFuncionario(jTextFieldCPF.getText(), jTextFieldNomeCompleto.getText(), jTextFieldCPF.getText(), jTextFieldRG.getText(), jDateNascChooser.getDate(), jComboBoxEstadoCivil.getSelectedItem().toString(), jTextFieldNomeConjuge.getText(), jTextFieldEndereco2.getText(), jTextFieldNumero.getText(), jTextFieldComplemento.getText(), jTextFieldCidade2.getText(), jTextFieldEstado2.getText(), jComboBoxCargo.getSelectedItem().toString(), jDateContrChooser.getDate(), cargo, jComboBoxSexo.getSelectedItem().toString(), jTextFieldBairro.getText(), jTextFieldCEP2.getText(), jTextFieldTelefone.getText(), 1);
-                        new ControleLogin().criarAcesso(jTextFieldLogin.getText(), funcionario, jTextFieldSenha.getText());
+                        //new ControleLogin().criarAcesso(jTextFieldLogin.getText(), funcionario, jTextFieldSenha.getText());
                         limpaCampos();
                         JOptionPane.showMessageDialog(null, "Usuário Cadastrado com Sucesso!");
                     } catch (Exception e) {

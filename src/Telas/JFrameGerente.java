@@ -12,7 +12,6 @@ import ControleCliente.JPanelCadastroCliente;
 import ControleCliente.JPanelConsultaCliente;
 import ControleVenda.Controladoras.ControlaVenda;
 import ControleVenda.StatusVenda.VendaAberta;
-import ControleVenda.jFrameCarrinho;
 import ControleVenda.jPanelFinalizarVenda;
 import ControleVenda.jPanelProcProdVend;
 import Entity.Funcionario;

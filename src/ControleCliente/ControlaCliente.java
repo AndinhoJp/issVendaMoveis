@@ -83,8 +83,8 @@ public class ControlaCliente {
         }
     }
 
-    public boolean persisteCliente(Cliente cliente, String endereço, String numero, String complemento, String cidade, String estado, String bairro, String TelFixo, String telMovel, String email) {
-        cliente.setEndereco(endereço);
+    public boolean persisteCliente(Cliente cliente, String endereco, String numero, String complemento, String cidade, String estado, String bairro, String TelFixo, String telMovel, String email) {
+        cliente.setEndereco(endereco);
         cliente.setNumero(numero);
         cliente.setComplemento(complemento);
         cliente.setCidade(cidade);

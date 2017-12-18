@@ -45,13 +45,30 @@ public class ControleLogin {
         }
     }
     
-    public void criarAcesso(String login, Funcionario funcionario, String senha) {
-        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-        s.beginTransaction();
-        Acesso acesso = new Acesso(login, funcionario, senha);
-        s.save(acesso);
-        s.getTransaction().commit();
+    public boolean verificaAcessoDesconto(String login, String senha) {
+        if (verificaLogin(login)) {
+            if (verificaSenha(login, senha)) {
+                ArrayList<Acesso> listaAcessos = new ControleLogin().getListaAcessos();
+                HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+                for (Acesso ac : listaAcessos) {
+                    if (ac.getLogin().equals(login)) {
+                        if(ac.getFuncionario().getNivelAcesso() == 0){
+                            HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+                            return true;
+                        }
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Senha incorreta! Verifique a senha digitada e tente novamente.");
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Login não encontrado! Verifique o login e tente novamente.");
+            return false;
+        }
+        return false;
     }
+    
     
      public Acesso consultaAcesso(String funcId){
      ArrayList<Acesso> listaAcessos = getListaAcessos();
