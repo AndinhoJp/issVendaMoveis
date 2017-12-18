@@ -20,6 +20,8 @@ import org.hibernate.Session;
  * @author ander
  */
 public class ControleLogin {
+    
+    
 
     public boolean verificaAcesso(String login, String senha) {
         if (verificaLogin(login)) {
@@ -28,7 +30,7 @@ public class ControleLogin {
                 HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
                 for (Acesso ac : listaAcessos) {
                     if (ac.getLogin().equals(login)) {
-                        nivelAcesso(ac.getFuncionario().getNivelAcesso());
+                        nivelAcesso(ac.getFuncionario().getNivelAcesso(), ac.getFuncionario());
                     }
                 }
                 HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
@@ -117,10 +119,10 @@ public class ControleLogin {
         return false;
     }
 
-    public void nivelAcesso(int nivelAcesso) {
+    public void nivelAcesso(int nivelAcesso, Funcionario funcionario) {
         switch (nivelAcesso) {
             case 0: //Gerente
-                new JFrameGerente();
+                new JFrameGerente(funcionario);
                 break;
             case 1: //Funcionario
                 break;

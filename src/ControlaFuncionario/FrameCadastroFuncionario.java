@@ -1,13 +1,14 @@
 package ControlaFuncionario;
 
+import Autenticacao.jFrameCriacaoLogin;
 import Entity.Funcionario;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class FrameCadastroFuncionario extends javax.swing.JFrame {
     
-    private Funcionario funcionario;
+    public Funcionario funcionario;
 
     enum EstadoCivil
     {
@@ -251,6 +252,7 @@ public class FrameCadastroFuncionario extends javax.swing.JFrame {
         jDateNascChooser = new com.toedter.calendar.JDateChooser();
         jComboBoxNivelAcesso = new javax.swing.JComboBox<>();
         jLabelNivelAcesso = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -361,6 +363,13 @@ public class FrameCadastroFuncionario extends javax.swing.JFrame {
 
         jLabelNivelAcesso.setText("Nível de Acesso");
 
+        jButton1.setText("Gerenciar Acesso");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -368,12 +377,6 @@ public class FrameCadastroFuncionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonVoltar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonSalvar)
-                        .addGap(154, 154, 154)
-                        .addComponent(jButtonAlterarDados))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelCargo)
@@ -443,7 +446,15 @@ public class FrameCadastroFuncionario extends javax.swing.JFrame {
                                         .addComponent(jTextFieldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jComboBoxNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonVoltar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSalvar)
+                        .addGap(154, 154, 154)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(jButtonAlterarDados))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -510,7 +521,9 @@ public class FrameCadastroFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxNivelAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNivelAcesso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAlterarDados)
                     .addComponent(jButtonVoltar)
@@ -569,6 +582,12 @@ public class FrameCadastroFuncionario extends javax.swing.JFrame {
         this.jTextFieldNomeConjuge.setEnabled(enableconjuge);
     }//GEN-LAST:event_jComboBoxEstadoCivilActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Funcionario login = this.funcionario;
+        JFrame jFrameCriacaoLogin = new jFrameCriacaoLogin(login);
+        jFrameCriacaoLogin.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -606,6 +625,7 @@ public class FrameCadastroFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAlterarDados;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButtonVoltar;

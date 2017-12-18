@@ -7,28 +7,31 @@ package Autenticacao;
 
 import Entity.Acesso;
 import Entity.Funcionario;
+import Autenticacao.ControleAcesso;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author ander
  */
-public class jFrameCriaçãoLogin extends javax.swing.JFrame {
+public class jFrameCriacaoLogin extends javax.swing.JFrame {
 
-    ControleLogin confereId = new ControleLogin();
-    
-    public jFrameCriaçãoLogin(Funcionario funcionario) {
-        this.setTitle("Criação do acesso de - " + funcionario.getIdFunc());
+   ControleLogin confereId = new ControleLogin();
+   public Funcionario funcionario;     
+   
+   public jFrameCriacaoLogin(){
+       initComponents();
+       funcionario = new Funcionario();
+   }
+
+    public jFrameCriacaoLogin(Funcionario funcionario) {
+        initComponents();
+        this.funcionario = funcionario;
+        this.setTitle("Criação do acesso de - " + funcionario.getNome());
         jPasswordFieldSenha.setText("123456");
         jPasswordFieldConfirSenha.setText("123456");
         jTextFieldNome.setText(funcionario.getNome());
         jTextFieldIdFunc.setText(funcionario.getIdFunc());
-        initComponents();
-       Funcionario func = funcionario;
-    }
-
-    private jFrameCriaçãoLogin() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -203,45 +206,46 @@ public class jFrameCriaçãoLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        if(jPasswordFieldSenha.getText().equals("") ||
-           jPasswordFieldConfirSenha.getText().equals("") ||
-           jTextFieldLogin.getText().equals("")){
+        if (jPasswordFieldSenha.getText().equals("")
+                || jPasswordFieldConfirSenha.getText().equals("")
+                || jTextFieldLogin.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Um dos campos obrigatório não está preenchido. Verifique e tente novamente");
         }
         if (!jPasswordFieldSenha.getText().equals(jPasswordFieldConfirSenha.getText())) {
             JOptionPane.showMessageDialog(null, "As senhas digitadas não conferem. Verifique e tente novamente.");
         }
-        if(confereId.confereDuplicidade(jTextFieldLogin.getText()) == false){
-            try{
-              // Acesso acesso = new ControleAcesso().criarAcesso(jTextFieldLogin.getText(), jTextFieldIdFunc.getText(), jPasswordFieldSenha.getText());
-            } catch(Exception e){
-                
+        if (new ControleLogin().confereDuplicidade(jTextFieldLogin.getText())) {
+            try {
+                Acesso acesso = new ControleAcesso().criarAcesso(jTextFieldLogin.getText(), funcionario, jPasswordFieldSenha.getText());
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar alterações!");
             }
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jPasswordFieldSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordFieldSenhaFocusGained
-if(jPasswordFieldSenha.getText().equals("123456")){
-    jPasswordFieldSenha.setText("");
-}
+        if (jPasswordFieldSenha.getText().equals("123456")) {
+            jPasswordFieldSenha.setText("");
+        }
     }//GEN-LAST:event_jPasswordFieldSenhaFocusGained
 
     private void jPasswordFieldConfirSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordFieldConfirSenhaFocusGained
-if(jPasswordFieldConfirSenha.getText().equals("123456")){
-    jPasswordFieldConfirSenha.setText("");
-}
+        if (jPasswordFieldConfirSenha.getText().equals("123456")) {
+            jPasswordFieldConfirSenha.setText("");
+        }
     }//GEN-LAST:event_jPasswordFieldConfirSenhaFocusGained
 
     private void jPasswordFieldSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordFieldSenhaFocusLost
-if(jPasswordFieldSenha.getText().equals("")){
-    jPasswordFieldSenha.setText("123456");
-}
+        if (jPasswordFieldSenha.getText().equals("")) {
+            jPasswordFieldSenha.setText("123456");
+        }
     }//GEN-LAST:event_jPasswordFieldSenhaFocusLost
 
     private void jPasswordFieldConfirSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordFieldConfirSenhaFocusLost
-    if(jPasswordFieldConfirSenha.getText().equals("")){
-    jPasswordFieldConfirSenha.setText("123456");
-}
+        if (jPasswordFieldConfirSenha.getText().equals("")) {
+            jPasswordFieldConfirSenha.setText("123456");
+        }
     }//GEN-LAST:event_jPasswordFieldConfirSenhaFocusLost
 
     private void jTextFieldIdFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdFuncActionPerformed
@@ -249,7 +253,7 @@ if(jPasswordFieldSenha.getText().equals("")){
     }//GEN-LAST:event_jTextFieldIdFuncActionPerformed
 
     private void jTextFieldIdFuncFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldIdFuncFocusLost
-        
+
     }//GEN-LAST:event_jTextFieldIdFuncFocusLost
 
     /**
@@ -269,20 +273,20 @@ if(jPasswordFieldSenha.getText().equals("")){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(jFrameCriaçãoLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jFrameCriacaoLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(jFrameCriaçãoLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jFrameCriacaoLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(jFrameCriaçãoLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jFrameCriacaoLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(jFrameCriaçãoLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jFrameCriacaoLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jFrameCriaçãoLogin().setVisible(true);
+                //new jFrameCriaçãoLogin().setVisible(true);
             }
         });
     }

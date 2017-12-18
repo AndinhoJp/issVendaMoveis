@@ -3,19 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RealizaVenda;
+package ControleVenda;
+
+import Telas.JFrameGerente;
+import java.util.Vector;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author ander
  */
-public class jFrameRealizaVenda extends javax.swing.JFrame {
+public class jFrameCarrinho extends javax.swing.JFrame {
 
     /**
-     * Creates new form jFrameRealizaVenda
+     * Creates new form jFrameCarrinho
      */
-    public jFrameRealizaVenda() {
+    public jFrameCarrinho() {
         initComponents();
+        DefaultTableModel model = (DefaultTableModel) jTableCarrinho.getModel();
+        model.setColumnIdentifiers(new String[]{"ID", "Nome", "Quantidade", "Preço"}); // ID||Nome||Quant||Preco||Total
+        model.setRowCount(1);
+    }
+
+    void inserirProduto() {
+
+    }
+
+    void removerProduto() {
+
     }
 
     /**
@@ -27,30 +45,32 @@ public class jFrameRealizaVenda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelTitulo = new javax.swing.JLabel();
+        jLabelCarrinhoCompras = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButtonFinalizar = new javax.swing.JButton();
+        jTableCarrinho = new javax.swing.JTable();
         jButtonFechar = new javax.swing.JButton();
-        jButtonExcluirItem = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
-        jLabelTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabelTitulo.setText("Produtos no carrinho");
+        jLabelCarrinhoCompras.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabelCarrinhoCompras.setText("Carrinho de compras");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jButtonFinalizar.setText("Finalizar");
+        jScrollPane1.setViewportView(jTableCarrinho);
 
         jButtonFechar.setText("Fechar");
         jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -59,10 +79,17 @@ public class jFrameRealizaVenda extends javax.swing.JFrame {
             }
         });
 
-        jButtonExcluirItem.setText("Excluir");
-        jButtonExcluirItem.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExcluirItemActionPerformed(evt);
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Finalizar Venda");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -75,31 +102,31 @@ public class jFrameRealizaVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelTitulo)
+                        .addComponent(jLabelCarrinhoCompras)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonExcluirItem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonFechar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonFinalizar)))
+                        .addComponent(jButtonExcluir)
+                        .addGap(64, 64, 64)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(jButtonFechar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelCarrinhoCompras)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonFinalizar)
                     .addComponent(jButtonFechar)
-                    .addComponent(jButtonExcluirItem))
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -107,12 +134,27 @@ public class jFrameRealizaVenda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
-    private void jButtonExcluirItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonExcluirItemActionPerformed
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        int pos = jTableCarrinho.getSelectedRow();
+        if (jTableCarrinho.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "O carrinho já está vazio!");
+        } else {
+            if (pos == -1) {
+                JOptionPane.showMessageDialog(null, "Selecione um produto para excluir");
+            } else {
+                jTableCarrinho.remove(pos);
+            }
+        }
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       // JFrameGerente jFrameGerente = new JFrameGerente();
+       // jFrameGerente.FinalizarVenda();
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,31 +173,31 @@ public class jFrameRealizaVenda extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(jFrameRealizaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jFrameCarrinho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(jFrameRealizaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jFrameCarrinho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(jFrameRealizaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jFrameCarrinho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(jFrameRealizaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jFrameCarrinho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jFrameRealizaVenda().setVisible(true);
+                new jFrameCarrinho().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonExcluirItem;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonFechar;
-    private javax.swing.JButton jButtonFinalizar;
-    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JLabel jLabelCarrinhoCompras;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableCarrinho;
     // End of variables declaration//GEN-END:variables
 }

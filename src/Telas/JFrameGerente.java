@@ -7,12 +7,20 @@ package Telas;
 
 import ControlaFuncionario.ControlaFalta;
 import ControlaFuncionario.JPanelCadastroFuncionario;
-import ControlaFuncionario.JPanelListaFuncionario;        
+import ControlaFuncionario.JPanelListaFuncionario;
 import ControleCliente.JPanelCadastroCliente;
 import ControleCliente.JPanelConsultaCliente;
+import ControleVenda.Controladoras.ControlaVenda;
+import ControleVenda.StatusVenda.VendaAberta;
+import ControleVenda.jFrameCarrinho;
+import ControleVenda.jPanelFinalizarVenda;
+import ControleVenda.jPanelProcProdVend;
+import Entity.Funcionario;
 import Imagem.JPanel.JPanelImagemGerente;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.security.auth.callback.ConfirmationCallback;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -26,18 +34,23 @@ public class JFrameGerente extends javax.swing.JFrame {
      * Creates new form JFrameGerente
      */
     CardLayout card;
+    Funcionario funcionario;
+    VendaAberta vendaAberto;
 
-    public JFrameGerente() {
+    public JFrameGerente(Funcionario f) {
         initComponents();
         this.setVisible(true);
+        funcionario = f;
         JPanel jPanelImagemGerente = new JPanelImagemGerente();
         card = (CardLayout) jPanelBase.getLayout();
         jPanelBase.add(jPanelImagemGerente);
         card.show(jPanelBase, "jPanelImagemGerente");
-
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-
+    }
+    
+        private JFrameGerente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -51,6 +64,7 @@ public class JFrameGerente extends javax.swing.JFrame {
 
         jLabelLogo = new javax.swing.JLabel();
         jPanelBase = new javax.swing.JPanel();
+        jButtonCarrinho = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuFuncionario = new javax.swing.JMenu();
         jMenuItemFuncionarioCadastrar = new javax.swing.JMenuItem();
@@ -58,6 +72,11 @@ public class JFrameGerente extends javax.swing.JFrame {
         jMenuCliente = new javax.swing.JMenu();
         jMenuItemClienteCadastrar = new javax.swing.JMenuItem();
         jMenuItemClienteConsultar = new javax.swing.JMenuItem();
+        jMenuProduto = new javax.swing.JMenu();
+        jMenuVendas = new javax.swing.JMenu();
+        jMenuItemProcurarProduto = new javax.swing.JMenuItem();
+        jMenuItemVendaFechadas = new javax.swing.JMenuItem();
+        jMenuItemVendaFinalizada = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,6 +89,14 @@ public class JFrameGerente extends javax.swing.JFrame {
         jPanelBase.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelBase.setPreferredSize(new java.awt.Dimension(1000, 600));
         jPanelBase.setLayout(new java.awt.CardLayout());
+
+        jButtonCarrinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Icones/cart.jpg"))); // NOI18N
+        jButtonCarrinho.setAlignmentY(0.0F);
+        jButtonCarrinho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCarrinhoActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -117,6 +144,37 @@ public class JFrameGerente extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuCliente);
 
+        jMenuProduto.setText("Produto");
+        jMenuBar1.add(jMenuProduto);
+
+        jMenuVendas.setText("Vendas");
+
+        jMenuItemProcurarProduto.setText("Procurar produto");
+        jMenuItemProcurarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProcurarProdutoActionPerformed(evt);
+            }
+        });
+        jMenuVendas.add(jMenuItemProcurarProduto);
+
+        jMenuItemVendaFechadas.setText("Vendas Fechadas");
+        jMenuItemVendaFechadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVendaFechadasActionPerformed(evt);
+            }
+        });
+        jMenuVendas.add(jMenuItemVendaFechadas);
+
+        jMenuItemVendaFinalizada.setText("Vendas Finalizada");
+        jMenuItemVendaFinalizada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVendaFinalizadaActionPerformed(evt);
+            }
+        });
+        jMenuVendas.add(jMenuItemVendaFinalizada);
+
+        jMenuBar1.add(jMenuVendas);
+
         jMenuSair.setText("Sair");
         jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,18 +192,23 @@ public class JFrameGerente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelLogo)
-                    .addComponent(jPanelBase, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelLogo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelLogo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 52, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelBase, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,7 +244,60 @@ public class JFrameGerente extends javax.swing.JFrame {
         jPanelBase.add(jPanelListaFuncionario);
         card.next(jPanelBase);
     }//GEN-LAST:event_jMenuItemFuncionarioConsultarActionPerformed
-                        
+
+    private void jButtonCarrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarrinhoActionPerformed
+
+        ControlaVenda controlaVenda = new ControlaVenda();
+
+        Date data = new Date();
+        String idVenda;
+        if (controlaVenda.getVendaAbertaFuncionario(funcionario) == null) {
+            idVenda = funcionario.getIdFunc() + data.getTime();
+            controlaVenda.novaVendaAberta(idVenda, funcionario);
+            JPanel jPanelCarrinhoDeCompras = new jPanelFinalizarVenda(funcionario, idVenda);
+            jPanelBase.add(jPanelCarrinhoDeCompras);
+            card.next(jPanelBase);
+        } else {
+            int n = JOptionPane.showConfirmDialog(
+                    null,
+                    "Já existem produtos no carrinho, gostaria de esvaziá-lo?",
+                    "Confirmar Opção",
+                    JOptionPane.YES_NO_OPTION);
+            JPanel jPanelCarrinhoDeCompras;
+            if (n == JOptionPane.YES_OPTION) {
+                controlaVenda.excluiVendaAberta(funcionario);
+                idVenda = funcionario.getIdFunc() + data.getTime();
+                controlaVenda.novaVendaAberta(idVenda, funcionario);
+                jPanelCarrinhoDeCompras = new jPanelFinalizarVenda(funcionario, idVenda);
+            } else {
+
+                jPanelCarrinhoDeCompras = new jPanelFinalizarVenda(funcionario, controlaVenda.getVendaAbertaFuncionario(funcionario).getVendaId());
+            }
+
+            jPanelBase.add(jPanelCarrinhoDeCompras);
+            card.next(jPanelBase);
+        }
+
+//        JFrame jFrameCarrinho = new jFrameCarrinho();
+//        jFrameCarrinho.setVisible(true);
+    }//GEN-LAST:event_jButtonCarrinhoActionPerformed
+
+    private void jMenuItemProcurarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProcurarProdutoActionPerformed
+        ControlaVenda controlaVenda = new ControlaVenda();
+        controlaVenda.getVendaAbertaFuncionario(funcionario);
+        JPanel jPanelProcProdVend = new jPanelProcProdVend(controlaVenda.getVendaAbertaFuncionario(funcionario), funcionario);
+        jPanelBase.add(jPanelProcProdVend);
+        card.next(jPanelBase);
+    }//GEN-LAST:event_jMenuItemProcurarProdutoActionPerformed
+
+    private void jMenuItemVendaFinalizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVendaFinalizadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemVendaFinalizadaActionPerformed
+
+    private void jMenuItemVendaFechadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVendaFechadasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemVendaFechadasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -218,7 +334,14 @@ public class JFrameGerente extends javax.swing.JFrame {
         });
     }
 
+//    public void FinalizarVenda() {
+//        JPanel jPanelFinalizarVenda = new jPanelFinalizarVenda();
+//        jPanelBase.add(jPanelFinalizarVenda);
+//        card.next(jPanelBase);
+//    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCarrinho;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCliente;
@@ -227,7 +350,12 @@ public class JFrameGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemClienteConsultar;
     private javax.swing.JMenuItem jMenuItemFuncionarioCadastrar;
     private javax.swing.JMenuItem jMenuItemFuncionarioConsultar;
+    private javax.swing.JMenuItem jMenuItemProcurarProduto;
+    private javax.swing.JMenuItem jMenuItemVendaFechadas;
+    private javax.swing.JMenuItem jMenuItemVendaFinalizada;
+    private javax.swing.JMenu jMenuProduto;
     private javax.swing.JMenu jMenuSair;
+    private javax.swing.JMenu jMenuVendas;
     private javax.swing.JPanel jPanelBase;
     // End of variables declaration//GEN-END:variables
 }
